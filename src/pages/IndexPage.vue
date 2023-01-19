@@ -1,6 +1,29 @@
 <template>
   <q-page class="q-pa-md">
     <!-- <MobileTable></MobileTable> -->
+
+    <q-card flat>
+      <q-input
+        filled
+        dense
+        debounce="300"
+        v-model="filter"
+        placeholder="Search Menus..."
+        ref="searchInput"
+      >
+        <template #append>
+          <q-icon name="search" />
+        </template>
+        <template #after>
+          <q-btn
+            flat
+            :icon="showSettings ? 'expand_less' : 'expand_more'"
+            @click="toggleSettings"
+          >
+          </q-btn>
+        </template>
+      </q-input>
+    </q-card>
     <q-table
       :rows="data"
       :columns="columns"
@@ -10,6 +33,7 @@
       virtual-scroll
       v-model:pagination="pagination"
       :rows-per-page-options="[0]"
+      :filter="filter"
     />
   </q-page>
 </template>
@@ -27,6 +51,12 @@ type Column = {
   sortable: boolean;
   align: 'left' | 'right' | 'center';
 };
+
+const showSettings = ref(false);
+function toggleSettings() {
+  showSettings.value = !showSettings.value;
+}
+const filter = ref('');
 
 const pagination = ref({
   rowsPerPage: 0,
@@ -53,7 +83,6 @@ const visibleColumns: CatalogKeys[] = [
   'average_gut_rating',
   'average_professor',
   'subject',
-  'title',
   'times_by_day',
 ];
 
@@ -65,7 +94,20 @@ const { isLoading, isFetching, isError, data, error } = useQuery({
 async function fetchCatalog() {
   const res = await fetch('https://janktable.yaleapps.com/api/catalog');
   const catalog = (await res.json()) as Catalog;
-  return catalog;
+  const theseFieldsToTwoDecimals: CatalogKeys[] = [
+    'average_gut_rating',
+    'average_professor',
+    'average_rating',
+    'average_rating_same_professors',
+    'average_workload',
+    'average_workload_same_professors',
+  ];
+  return catalog.map((course) => {
+    theseFieldsToTwoDecimals.forEach((key) => {
+      course[key] = Number(course[key]).toFixed(2);
+    });
+    return course;
+  });
 }
 
 // Takes in string like "times_by_day" and returns "Times by Day"
