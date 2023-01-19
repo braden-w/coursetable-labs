@@ -4,8 +4,11 @@
     <q-table
       :rows="data"
       :columns="columns"
-      row-key="course_code"
+      row-key="listing_id"
       :loading="isLoading"
+      virtual-scroll
+      v-model:pagination="pagination"
+      :rows-per-page-options="[0]"
     />
   </q-page>
 </template>
