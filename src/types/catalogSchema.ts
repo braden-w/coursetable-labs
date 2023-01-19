@@ -1,4 +1,4 @@
-// Created with https://transform.tools/typescript-to-zod
+// Created with https://transform.tools/typescript-to-zod from catalog.d.ts
 import { z } from 'zod';
 import { Area, ExtraInfo, FinalExam, School, Skill } from './catalog';
 
