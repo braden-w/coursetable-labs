@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row items-center justify-evenly">
+  <q-page class="q-pa-md">
     <!-- <MobileTable></MobileTable> -->
     <q-table
       title="Courses"
@@ -7,6 +7,9 @@
       :columns="columns"
       row-key="name"
       :loading="isLoading"
+      virtual-scroll
+      v-model:pagination="pagination"
+      :rows-per-page-options="[0]"
     />
   </q-page>
 </template>
@@ -15,6 +18,7 @@
 import { useQuery } from '@tanstack/vue-query';
 import { Catalog } from 'src/types/catalog';
 import { catalogKeys } from 'src/types/catalogKeys';
+import { ref } from 'vue';
 
 type Column = {
   name: keyof Catalog;
@@ -22,14 +26,11 @@ type Column = {
   field: string;
   sortable: boolean;
 };
-// const columns: Column[] = [
-//   {
-//     name: 'all_course_codes',
-//     label: 'all_course_codes',
-//     field: 'all_course_codes',
-//     sortable: true,
-//   },
-// ];
+
+const pagination = ref({
+  rowsPerPage: 0,
+});
+
 const columns: Column[] = catalogKeys.map(
   (key): Column => ({
     name: key as keyof Catalog,
