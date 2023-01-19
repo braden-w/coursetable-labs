@@ -1,9 +1,18 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <MobileTable></MobileTable>
+    <!-- <MobileTable></MobileTable> -->
+    <!-- Await response -->
   </q-page>
 </template>
 
-<script setup lang="ts">
-import MobileTable from 'src/components/MobileTable.vue.js';
+<script lang="ts">
+export default {
+  async preFetch() {
+    const res = await fetch('https://janktable.yaleapps.com/api/catalog');
+    const catalog = await res.json();
+    return { catalog };
+  },
+};
 </script>
+
+<script setup lang="ts"></script>
