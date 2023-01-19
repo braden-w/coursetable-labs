@@ -6,6 +6,7 @@
       :columns="columns"
       row-key="listing_id"
       :loading="isLoading"
+      :visible-columns="visibleColumns"
       virtual-scroll
       v-model:pagination="pagination"
       :rows-per-page-options="[0]"
@@ -15,7 +16,7 @@
 
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query';
-import { Catalog, catalogKeys } from 'src/types/catalog';
+import { Catalog, catalogKeys, CatalogKeys } from 'src/types/catalog';
 import { Course } from 'src/types/course';
 import { ref } from 'vue';
 
@@ -40,6 +41,22 @@ const columns: Column[] = catalogKeys.map(
     align: 'left',
   })
 );
+const visibleColumns: CatalogKeys[] = [
+  'course_code',
+  'title',
+  'all_course_codes',
+  'areas',
+  'average_rating',
+  'average_rating_same_professors',
+  'average_workload',
+  'average_workload_same_professors',
+  'average_gut_rating',
+  'average_professor',
+  'subject',
+  'title',
+  'times_by_day',
+];
+
 const { isLoading, isFetching, isError, data, error } = useQuery({
   queryKey: ['catalog'],
   queryFn: fetchCatalog,
