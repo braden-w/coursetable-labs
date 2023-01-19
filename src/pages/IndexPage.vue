@@ -2,29 +2,26 @@
   <q-page class="q-pa-md">
     <!-- <MobileTable></MobileTable> -->
     <q-table
-      title="Courses"
       :rows="data"
       :columns="columns"
-      row-key="name"
+      row-key="course_code"
       :loading="isLoading"
-      virtual-scroll
-      v-model:pagination="pagination"
-      :rows-per-page-options="[0]"
     />
   </q-page>
 </template>
 
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query';
-import { Catalog } from 'src/types/catalog';
-import { catalogKeys } from 'src/types/catalogKeys';
+import { Catalog, catalogKeys } from 'src/types/catalog';
+import { Course } from 'src/types/course';
 import { ref } from 'vue';
 
 type Column = {
-  name: keyof Catalog;
+  name: keyof Course;
   label: string;
   field: string;
   sortable: boolean;
+  align: 'left' | 'right' | 'center';
 };
 
 const pagination = ref({
@@ -33,10 +30,11 @@ const pagination = ref({
 
 const columns: Column[] = catalogKeys.map(
   (key): Column => ({
-    name: key as keyof Catalog,
+    name: key as keyof Course,
     label: keyToLabel(key),
     field: key,
     sortable: true,
+    align: 'left',
   })
 );
 const { isLoading, isFetching, isError, data, error } = useQuery({
@@ -46,7 +44,7 @@ const { isLoading, isFetching, isError, data, error } = useQuery({
 
 async function fetchCatalog() {
   const res = await fetch('https://janktable.yaleapps.com/api/catalog');
-  const catalog = await res.json();
+  const catalog = (await res.json()) as Catalog;
   return catalog;
 }
 
