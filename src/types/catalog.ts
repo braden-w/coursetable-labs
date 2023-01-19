@@ -24,7 +24,7 @@ export const catalogKeys: CatalogKeys[] = [
   // 'fysem',
   // 'last_enrollment',
   // 'last_enrollment_same_professors',
-  // 'listing_id',
+  'listing_id',
   // 'locations_summary',
   // 'number',
   // 'professor_ids',
