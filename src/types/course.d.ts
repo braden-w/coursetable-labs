@@ -1,4 +1,4 @@
-export interface Catalog {
+export interface Course {
   all_course_codes: string[];
   areas: Area[];
   average_gut_rating: number | null;
