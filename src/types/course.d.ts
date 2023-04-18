@@ -9,6 +9,7 @@ export interface Course {
   average_workload_same_professors: number | null;
   classnotes: null | string;
   course_code: string;
+  course_id: number;
   credits: number;
   crn: number;
   description: null | string;
