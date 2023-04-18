@@ -103,10 +103,10 @@ export enum Skill {
 }
 
 export interface TimesByDay {
-  Tuesday?: Array<string[]>;
-  Thursday?: Array<string[]>;
   Monday?: Array<string[]>;
+  Tuesday?: Array<string[]>;
   Wednesday?: Array<string[]>;
+  Thursday?: Array<string[]>;
   Friday?: Array<string[]>;
   Saturday?: Array<string[]>;
 }
