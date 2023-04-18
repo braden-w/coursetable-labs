@@ -15,7 +15,7 @@ export interface Course {
   description: null | string;
   enrolled: null;
   extra_info: ExtraInfo;
-  final_exam: FinalExam | null;
+  final_exam: string | null;
   flag_info: string[];
   fysem: boolean;
   last_enrollment: number | null;
@@ -51,27 +51,6 @@ export enum Area {
 export enum ExtraInfo {
   Active = 'ACTIVE',
   Cancelled = 'CANCELLED',
-}
-
-export enum FinalExam {
-  FridayMay52023At2Pm = 'Friday, May 5, 2023 at 2pm',
-  FridayMay52023At9Am = 'Friday, May 5, 2023 at 9am',
-  Htba = 'HTBA',
-  MondayMay82023At2Pm = 'Monday, May 8, 2023 at 2pm',
-  MondayMay82023At7Pm = 'Monday, May 8, 2023 at 7pm',
-  MondayMay82023At9Am = 'Monday, May 8, 2023 at 9am',
-  NoRegularFinalExamination = 'No regular final examination',
-  SaturdayMay62023At2Pm = 'Saturday, May 6, 2023 at 2pm',
-  SaturdayMay62023At7Pm = 'Saturday, May 6, 2023 at 7pm',
-  SaturdayMay62023At9Am = 'Saturday, May 6, 2023 at 9am',
-  SundayMay72023At2Pm = 'Sunday, May 7, 2023 at 2pm',
-  SundayMay72023At7Pm = 'Sunday, May 7, 2023 at 7pm',
-  ThursdayMay42023At7Pm = 'Thursday, May 4, 2023 at 7pm',
-  TuesdayMay92023At2Pm = 'Tuesday, May 9, 2023 at 2pm',
-  TuesdayMay92023At7Pm = 'Tuesday, May 9, 2023 at 7pm',
-  TuesdayMay92023At9Am = 'Tuesday, May 9, 2023 at 9am',
-  WednesdayMay102023At2Pm = 'Wednesday, May 10, 2023 at 2pm',
-  WednesdayMay102023At9Am = 'Wednesday, May 10, 2023 at 9am',
 }
 
 export enum School {
