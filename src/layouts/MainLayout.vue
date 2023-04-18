@@ -16,7 +16,7 @@
           round
           flat
           icon="code"
-          href="https://github.com/braden-w/yale-buttery-book"
+          href="https://github.com/braden-w/mobiletable"
           target="_blank"
         />
         <!-- <q-btn round flat icon="info" to="/about" /> -->
