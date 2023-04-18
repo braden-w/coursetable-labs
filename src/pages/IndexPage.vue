@@ -98,6 +98,7 @@ async function fetchCatalog() {
     .from('Courses')
     .select('*')
     .eq('season_code', '202303');
+  return data;
 }
 
 // Takes in string like "times_by_day" and returns "Times by Day"
