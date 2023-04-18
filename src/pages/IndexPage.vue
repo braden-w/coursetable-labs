@@ -34,12 +34,14 @@
       v-model:pagination="pagination"
       :rows-per-page-options="[0]"
       :filter="filter"
+      flat
     />
   </q-page>
 </template>
 
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query';
+import { supabase } from 'src/supabase';
 import { Catalog, catalogKeys, CatalogKeys } from 'src/types/catalog';
 import { Course } from 'src/types/course';
 import { ref } from 'vue';
@@ -92,22 +94,10 @@ const { isLoading, isFetching, isError, data, error } = useQuery({
 });
 
 async function fetchCatalog() {
-  const res = await fetch('https://janktable.yaleapps.com/api/catalog');
-  const catalog = (await res.json()) as Catalog;
-  const theseFieldsToTwoDecimals: CatalogKeys[] = [
-    'average_gut_rating',
-    'average_professor',
-    'average_rating',
-    'average_rating_same_professors',
-    'average_workload',
-    'average_workload_same_professors',
-  ];
-  return catalog.map((course) => {
-    theseFieldsToTwoDecimals.forEach((key) => {
-      course[key] = Number(course[key]).toFixed(2);
-    });
-    return course;
-  });
+  const { data, error } = await supabase
+    .from('Courses')
+    .select('*')
+    .eq('season_code', '202303');
 }
 
 // Takes in string like "times_by_day" and returns "Times by Day"
