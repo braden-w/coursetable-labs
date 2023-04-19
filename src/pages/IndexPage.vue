@@ -41,7 +41,7 @@
 
 <script lang="ts">
 export default {
-  prefetch() {
+  preFetch() {
     console.log('Preload');
     // const coursesStore = useCoursesStore();
     // console.log(
