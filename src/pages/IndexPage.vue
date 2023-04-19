@@ -29,6 +29,7 @@
       row-key="listing_id"
       :visible-columns="visibleColumns"
       virtual-scroll
+      style="height: calc(100vh - 144px)"
       v-model:pagination="pagination"
       :rows-per-page-options="[0]"
       :filter="filter"
