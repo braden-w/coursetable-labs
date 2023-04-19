@@ -25,7 +25,7 @@
       </q-input>
     </q-card>
     <q-table
-      :rows="data"
+      :rows="coursesStore.courses"
       :columns="columns"
       row-key="listing_id"
       :loading="isLoading"
@@ -41,27 +41,42 @@
 
 <script lang="ts">
 export default {
-  preFetch() {
-    console.log('Preload');
-    // const coursesStore = useCoursesStore();
-    // console.log(
-    //   '🚀 ~ file: IndexPage.vue:45 ~ prefetch ~ coursesStore:',
-    //   coursesStore
-    // );
-    // coursesStore.courses = await fetchCatalog();
-    // console.log(
-    //   '🚀 ~ file: IndexPage.vue:46 ~ prefetch ~ coursesStore.courses:',
-    //   coursesStore.courses
-    // );
+  async preFetch({ store }) {
+    async function fetchCatalog() {
+      const visibleColumns: CatalogKeys[] = [
+        'course_code',
+        'title',
+        'all_course_codes',
+        'areas',
+        'average_rating',
+        'average_rating_same_professors',
+        'average_workload',
+        'average_workload_same_professors',
+        'average_gut_rating',
+        'average_professor',
+        'subject',
+        'times_by_day',
+      ];
+      const { data, error } = await supabase
+        .from('Courses')
+        .select(visibleColumns.join(','))
+        .eq('season_code', '202303')
+        .limit(100);
+      return data;
+    }
+    const coursesStore = useCoursesStore(store);
+    coursesStore.courses = await fetchCatalog();
   },
 };
 </script>
 
 <script setup lang="ts">
+import { useCoursesStore } from 'src/stores/courses';
 import { supabase } from 'src/supabase';
 import { CatalogKeys } from 'src/types/catalog';
 import { Course } from 'src/types/course';
 import { ref } from 'vue';
+const coursesStore = useCoursesStore();
 
 type Column = {
   name: keyof Course;
@@ -105,15 +120,6 @@ const columns: Column[] = visibleColumns.map(
     align: 'left',
   })
 );
-
-async function fetchCatalog() {
-  const { data, error } = await supabase
-    .from('Courses')
-    .select(visibleColumns.join(','))
-    .eq('season_code', '202303')
-    .limit(10);
-  return data;
-}
 
 // Takes in string like "times_by_day" and returns "Times by Day"
 function keyToLabel(label: string) {
