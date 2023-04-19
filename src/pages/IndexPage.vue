@@ -64,15 +64,6 @@ const pagination = ref({
   rowsPerPage: 0,
 });
 
-const columns: Column[] = catalogKeys.map(
-  (key): Column => ({
-    name: key as keyof Course,
-    label: keyToLabel(key),
-    field: key,
-    sortable: true,
-    align: 'left',
-  })
-);
 const visibleColumns: CatalogKeys[] = [
   'course_code',
   'title',
@@ -88,6 +79,16 @@ const visibleColumns: CatalogKeys[] = [
   'times_by_day',
 ];
 
+const columns: Column[] = visibleColumns.map(
+  (key): Column => ({
+    name: key,
+    label: keyToLabel(key),
+    field: key,
+    sortable: true,
+    align: 'left',
+  })
+);
+
 const { isLoading, isFetching, isError, data, error } = useQuery({
   queryKey: ['catalog'],
   queryFn: fetchCatalog,
@@ -96,8 +97,9 @@ const { isLoading, isFetching, isError, data, error } = useQuery({
 async function fetchCatalog() {
   const { data, error } = await supabase
     .from('Courses')
-    .select('*')
-    .eq('season_code', '202303');
+    .select(visibleColumns.join(','))
+    .eq('season_code', '202303')
+    .limit(10);
   return data;
 }
 
