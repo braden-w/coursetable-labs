@@ -39,10 +39,27 @@
   </q-page>
 </template>
 
+<script lang="ts">
+export default {
+  prefetch() {
+    console.log('Preload');
+    // const coursesStore = useCoursesStore();
+    // console.log(
+    //   '🚀 ~ file: IndexPage.vue:45 ~ prefetch ~ coursesStore:',
+    //   coursesStore
+    // );
+    // coursesStore.courses = await fetchCatalog();
+    // console.log(
+    //   '🚀 ~ file: IndexPage.vue:46 ~ prefetch ~ coursesStore.courses:',
+    //   coursesStore.courses
+    // );
+  },
+};
+</script>
+
 <script setup lang="ts">
-import { useQuery } from '@tanstack/vue-query';
 import { supabase } from 'src/supabase';
-import { Catalog, catalogKeys, CatalogKeys } from 'src/types/catalog';
+import { CatalogKeys } from 'src/types/catalog';
 import { Course } from 'src/types/course';
 import { ref } from 'vue';
 
@@ -88,11 +105,6 @@ const columns: Column[] = visibleColumns.map(
     align: 'left',
   })
 );
-
-const { isLoading, isFetching, isError, data, error } = useQuery({
-  queryKey: ['catalog'],
-  queryFn: fetchCatalog,
-});
 
 async function fetchCatalog() {
   const { data, error } = await supabase
