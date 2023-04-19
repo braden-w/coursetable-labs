@@ -7,7 +7,6 @@
 
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
-
 const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
@@ -15,9 +14,9 @@ module.exports = configure(function (/* ctx */) {
     preFetch: true,
     eslint: {
       // fix: true,
-      // include = [],
-      // exclude = [],
-      // rawOptions = {},
+      // include: [],
+      // exclude: [],
+      // rawOptions: {},
       warnings: true,
       errors: true,
     },
