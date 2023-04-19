@@ -8,8 +8,7 @@
         dense
         debounce="300"
         v-model="filter"
-        placeholder="Search Menus..."
-        ref="searchInput"
+        placeholder="Search Courses..."
       >
         <template #append>
           <q-icon name="search" />
