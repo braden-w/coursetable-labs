@@ -25,7 +25,7 @@
       :rows="courses"
       :columns="columns"
       row-key="listing_id"
-      :visible-columns="visibleColumns"
+      :visible-columns="toggledColumns"
       virtual-scroll
       style="height: calc(100vh - 144px)"
       v-model:pagination="pagination"
@@ -88,7 +88,7 @@ function priceGradient(value) {
 }
 
 const coursesStore = useCoursesStore();
-const { courses, columns, visibleColumns, filter, pagination } =
+const { courses, columns, toggledColumns, filter, pagination } =
   storeToRefs(coursesStore);
 
 const showSettings = ref(false);
