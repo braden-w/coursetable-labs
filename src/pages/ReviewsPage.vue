@@ -43,8 +43,6 @@
 import { useQuery } from '@tanstack/vue-query';
 import { Database } from 'app/types/supabase';
 import { supabase } from 'src/supabase';
-import { Catalog, catalogKeys, CatalogKeys } from 'src/types/catalog';
-import { Course } from 'src/types/course';
 import { ref } from 'vue';
 
 type Row =
