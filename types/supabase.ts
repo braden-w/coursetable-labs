@@ -169,7 +169,16 @@ export interface Database {
       };
     };
     Views: {
-      [_ in never]: never;
+      evaluationnarrativestocourses202303: {
+        Row: {
+          all_course_codes: Json | null;
+          areas: Json | null;
+          comment: string | null;
+          comment_compound: number | null;
+          skills: Json | null;
+          title: string | null;
+        };
+      };
     };
     Functions: {
       [_ in never]: never;
