@@ -34,7 +34,37 @@
       :rows-per-page-options="[0]"
       :filter="filter"
       flat
-    />
+    >
+      <template v-slot:body-cell="props">
+        <q-td :props="props">
+          <template v-if="Array.isArray(props.value)">
+            <q-badge
+              v-for="(item, index) in props.value"
+              :key="index"
+              color="blue"
+              :label="item"
+              class="q-mr-sm"
+            />
+          </template>
+          <template
+            v-else-if="
+              props.value &&
+              Number(props.value) >= 0 &&
+              Number(props.value) <= 5
+            "
+          >
+            <q-badge :color="`${priceGradient(props.value)}-3`">
+              <div :class="`text-${priceGradient(props.value)}-10`">
+                {{ props.value }}
+              </div>
+            </q-badge>
+          </template>
+          <template v-else>
+            {{ props.value }}
+          </template>
+        </q-td>
+      </template>
+    </q-table>
   </q-page>
 </template>
 
@@ -51,6 +81,11 @@ export default {
 import { useCoursesStore } from 'src/stores/courses';
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
+
+function priceGradient(value) {
+  const rangeColors = ['red', 'orange', 'lime', 'light-green', 'teal'];
+  return rangeColors[Math.round(value) - 1];
+}
 
 const coursesStore = useCoursesStore();
 const { courses, columns, visibleColumns, filter, pagination } =
