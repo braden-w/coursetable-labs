@@ -1,4 +1,4 @@
-export interface Course {
+export interface CourseFromApi {
   all_course_codes: string[];
   areas: Area[];
   average_gut_rating: number | null;

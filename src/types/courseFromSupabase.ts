@@ -1,8 +1,8 @@
-import { Course } from './course';
+import { Database } from 'app/types/supabase';
+import { CourseFromApi } from './courseFromApi';
 
-export type Catalog = Course[];
-export type CatalogKeys = keyof Course;
-export const catalogKeys: CatalogKeys[] = [
+export type CourseFromSupabase = Database['public']['Tables']['Courses']['Row'];
+export const catalogKeys: (keyof CourseFromApi)[] = [
   'all_course_codes',
   'areas',
   'average_gut_rating',
