@@ -1,10 +1,9 @@
 import { defineStore } from 'pinia';
 import { supabase } from 'src/supabase';
-import { CatalogKeys } from 'src/types/catalog';
-import { Course } from 'src/types/course';
+import { CourseFromSupabase } from 'src/types/courseFromSupabase';
 
 type Column = {
-  name: keyof Course;
+  name: keyof CourseFromSupabase;
   label: string;
   field: string;
   sortable: boolean;
@@ -16,15 +15,16 @@ export const useCoursesStore = defineStore('courses', {
     courses: [],
     visibleColumns: [
       'all_course_codes',
-      'areas',
+      'title',
+      'average_rating',
+      'average_rating_same_professors',
+      'average_workload',
+      'average_workload_same_professors',
       'average_gut_rating',
       'average_professor',
-      'average_rating',
-      'average_workload',
-      'average_rating_same_professors',
-      'average_workload_same_professors',
+      'areas',
+      'skills',
       'classnotes',
-      'course_code',
       'course_id',
       'credits',
       'description',
@@ -35,10 +35,8 @@ export const useCoursesStore = defineStore('courses', {
       'requirements',
       'school',
       'season_code',
-      'skills',
       'times_summary',
-      'title',
-    ] as CatalogKeys[],
+    ] as (keyof CourseFromSupabase)[],
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
@@ -60,7 +58,7 @@ export const useCoursesStore = defineStore('courses', {
         .from('Courses')
         .select(this.visibleColumns.join(','))
         .eq('season_code', '202303')
-        .limit(100);
+        .limit(10);
       this.courses = data;
     },
   },
