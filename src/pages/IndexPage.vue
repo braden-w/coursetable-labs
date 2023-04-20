@@ -43,7 +43,7 @@
               :key="index"
               color="blue"
               :label="item"
-              class="q-mr-sm"
+              class="q-mr-sm text-body2"
             />
           </template>
           <template
@@ -54,13 +54,15 @@
             "
           >
             <q-badge :color="`${priceGradient(props.value)}-3`">
-              <div :class="`text-${priceGradient(props.value)}-10`">
+              <div :class="`text-body2 text-${priceGradient(props.value)}-10`">
                 {{ props.value }}
               </div>
             </q-badge>
           </template>
           <template v-else>
-            {{ props.value }}
+            <div class="text-body2">
+              {{ props.value }}
+            </div>
           </template>
         </q-td>
       </template>
