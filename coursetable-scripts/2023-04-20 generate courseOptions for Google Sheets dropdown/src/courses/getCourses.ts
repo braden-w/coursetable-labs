@@ -9,7 +9,9 @@ const coursesForDisplayText = `query CoursesForDisplayText {
 
 export async function getCoursesForDisplayText() {
   try {
-    const courses = fetchCourseTable(coursesForDisplayText);
+    const {
+      data: { computed_listing_info: courses },
+    } = await fetchCourseTable(coursesForDisplayText);
     return courses;
   } catch (err) {
     console.error(err);
