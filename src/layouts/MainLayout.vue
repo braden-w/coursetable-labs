@@ -31,7 +31,7 @@
 
     <q-page-container>
       <router-view />
-      <q-footer class="text-center">&copy; MobileTable 2023</q-footer>
+      <q-footer class="text-center bg-dark">&copy; MobileTable 2023</q-footer>
     </q-page-container>
   </q-layout>
 </template>
