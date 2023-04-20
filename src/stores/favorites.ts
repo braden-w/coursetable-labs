@@ -7,6 +7,11 @@ type CourseAbbreviated = Pick<
   'course_id' | 'all_course_codes' | 'title'
 >;
 
+type CourseOptions = {
+  course_id: string;
+  displayText: string;
+};
+
 const selectedColumns: (keyof CourseAbbreviated)[] = [
   'course_id',
   'all_course_codes',
@@ -16,7 +21,7 @@ const selectedColumns: (keyof CourseAbbreviated)[] = [
 export const useFavoritesStore = defineStore('courses', {
   state: () => ({
     courses: [] as CourseAbbreviated[],
-    selectedCourses: [] as CourseAbbreviated[],
+    selectedCourses: [] as CourseOptions[],
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
@@ -32,8 +37,7 @@ export const useFavoritesStore = defineStore('courses', {
       const { data, error } = await supabase
         .from('Courses')
         .select(selectedColumns.join(','))
-        .eq('season_code', '202303')
-        .limit(10);
+        .limit(1000);
       this.courses = data;
     },
   },
