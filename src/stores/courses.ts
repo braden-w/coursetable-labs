@@ -10,43 +10,45 @@ type Column = {
   align: 'left' | 'right' | 'center';
 };
 
+const defaultToggledColumns: (keyof CourseFromSupabase)[] = [
+  'all_course_codes',
+  'title',
+  'average_rating',
+  'average_rating_same_professors',
+  'average_workload',
+  'average_workload_same_professors',
+  'average_gut_rating',
+  'average_professor',
+  'areas',
+  'skills',
+  'classnotes',
+  'course_id',
+  'credits',
+  'description',
+  'final_exam',
+  'flag_info',
+  'locations_summary',
+  'number',
+  'professor_names',
+  'regnotes',
+  'requirements',
+  'same_course_id',
+  'section',
+  'school',
+  'season_code',
+  'times_summary',
+];
+
 export const useCoursesStore = defineStore('courses', {
   state: () => ({
     courses: [],
-    visibleColumns: [
-      'all_course_codes',
-      'title',
-      'average_rating',
-      'average_rating_same_professors',
-      'average_workload',
-      'average_workload_same_professors',
-      'average_gut_rating',
-      'average_professor',
-      'areas',
-      'skills',
-      'classnotes',
-      'course_id',
-      'credits',
-      'description',
-      'final_exam',
-      'flag_info',
-      'locations_summary',
-      'number',
-      'professor_names',
-      'regnotes',
-      'requirements',
-      'same_course_id',
-      'section',
-      'school',
-      'season_code',
-      'times_summary',
-    ] as (keyof CourseFromSupabase)[],
+    toggledColumns: defaultToggledColumns,
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
   getters: {
     columns: (state) =>
-      state.visibleColumns.map(
+      state.toggledColumns.map(
         (key): Column => ({
           name: key,
           label: keyToLabel(key),
@@ -60,7 +62,7 @@ export const useCoursesStore = defineStore('courses', {
     async fetchCatalog() {
       const { data, error } = await supabase
         .from('Courses')
-        .select(this.visibleColumns.join(','))
+        .select(this.toggledColumns.join(','))
         .eq('season_code', '202303')
         .limit(10);
       this.courses = data;
