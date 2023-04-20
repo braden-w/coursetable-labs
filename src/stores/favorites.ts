@@ -24,7 +24,7 @@ export const useFavoritesStore = defineStore('courses', {
     courseOptions: (state) =>
       state.courses.map((course) => ({
         course_id: course.course_id,
-        displayText: `${course.all_course_codes.join('/')} - ${course.title}`,
+        displayText: `${course.all_course_codes.join(' | ')} - ${course.title}`,
       })),
   },
   actions: {
