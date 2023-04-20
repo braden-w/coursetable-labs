@@ -30,24 +30,13 @@ const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courseOptions.value);
 
-// const filterFn = (val: string, update: (options: any[]) => void) => {
-//   update(
-//     courseOptions.value.filter((option) => {
-//       return option.displayText.toLowerCase().includes(val.toLowerCase());
-//     })
-//   );
-// };
-
 function filterFn(val: string, update) {
-  // if (val === '') {
-  //   update(() => {
-  //     options.value = stringOptions
-
-  //     // here you have access to "ref" which
-  //     // is the Vue reference of the QSelect
-  //   })
-  //   return
-  // }
+  if (val === '') {
+    update(() => {
+      displayedCourseOptions.value = courseOptions.value;
+    });
+    return;
+  }
 
   update(() => {
     const needle = val.toLowerCase();
