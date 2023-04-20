@@ -2,7 +2,12 @@ import { defineStore } from 'pinia';
 import { supabase } from 'src/supabase';
 import { CourseFromSupabase } from 'src/types/courseFromSupabase';
 
-const selectColumns: (keyof CourseFromSupabase)[] = [
+type CourseAbbreviated = Pick<
+  CourseFromSupabase,
+  'course_id' | 'all_course_codes' | 'title'
+>;
+
+const selectedColumns: (keyof CourseAbbreviated)[] = [
   'course_id',
   'all_course_codes',
   'title',
@@ -10,7 +15,8 @@ const selectColumns: (keyof CourseFromSupabase)[] = [
 
 export const useFavoritesStore = defineStore('courses', {
   state: () => ({
-    courses: [] as CourseFromSupabase[],
+    courses: [] as CourseAbbreviated[],
+    selectedCourses: [] as CourseAbbreviated[],
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
@@ -25,7 +31,7 @@ export const useFavoritesStore = defineStore('courses', {
     async fetchAbbreviatedCatalog() {
       const { data, error } = await supabase
         .from('Courses')
-        .select(selectColumns.join(','))
+        .select(selectedColumns.join(','))
         .eq('season_code', '202303')
         .limit(10);
       this.courses = data;
