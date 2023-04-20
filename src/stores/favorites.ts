@@ -10,18 +10,25 @@ const selectColumns: (keyof CourseFromSupabase)[] = [
 
 export const useFavoritesStore = defineStore('courses', {
   state: () => ({
-    courseOptions: [],
+    courses: [] as CourseFromSupabase[],
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
+  getters: {
+    courseOptions: (state) =>
+      state.courses.map((course) => ({
+        course_id: course.course_id,
+        displayText: `${course.all_course_codes.join('/')} - ${course.title}`,
+      })),
+  },
   actions: {
     async fetchAbbreviatedCatalog() {
       const { data, error } = await supabase
         .from('Courses')
-        .select(this.selectColumns.join(','))
+        .select(selectColumns.join(','))
         .eq('season_code', '202303')
         .limit(10);
-      this.courseOptions = data;
+      this.courses = data;
     },
   },
 });
