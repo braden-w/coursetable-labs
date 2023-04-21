@@ -42,9 +42,9 @@
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
-            Any words to defend your choices?
+            Any remarks or words to defend your choices?
           </div>
-          <q-input filled v-model="defendChoices" />
+          <q-input filled v-model="remarks" />
         </q-card-section>
       </q-card>
 
@@ -71,20 +71,29 @@ export default {
 <script setup lang="ts">
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
+import { supabase } from 'src/supabase';
+import { getDisplayText } from 'src/utils/getDisplayText';
 import { computed, ref } from 'vue';
 
 const favoritesStore = useFavoritesStore();
 
 const email = ref('');
-const defendChoices = ref('');
+const remarks = ref('');
 
 function isValidEmail(email: string) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
 
-function submitForm() {
-  // Add implementation for form submission.
+async function submitForm() {
+  const { error } = await supabase.from('UserCourse').insert({
+    email: email.value,
+    selected_courses: favoritesStore.selectedCourses,
+    remarks: remarks.value,
+    favorite_courses: favoritesStore.selectedCourses
+      .map((course) => getDisplayText(course))
+      .join('; '),
+  });
 }
 
 const isFormValid = computed(() => {
