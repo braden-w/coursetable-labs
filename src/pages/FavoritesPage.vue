@@ -50,7 +50,7 @@
 
       <q-card flat class="my-card q-mb-md">
         <q-btn
-          color="primary"
+          :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
           type="submit"
           :disable="!isFormValid"
