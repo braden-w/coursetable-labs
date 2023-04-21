@@ -31,6 +31,7 @@
 </template>
 
 <script setup lang="ts">
+import Fuse from 'fuse.js';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
@@ -50,9 +51,14 @@ function filterFn(val: string, update) {
 
   update(() => {
     const needle = val.toLowerCase();
-    displayedCourseOptions.value = courseOptions.value.filter(
-      (v) => v.displayText.toLowerCase().indexOf(needle) > -1
-    );
+    const fuse = new Fuse(courseOptions.value, {
+      keys: ['all_course_codes', 'title'],
+      threshold: 0.4,
+      includeScore: true,
+    });
+    displayedCourseOptions.value = fuse
+      .search(needle)
+      .map((result) => result.item);
   });
 }
 
