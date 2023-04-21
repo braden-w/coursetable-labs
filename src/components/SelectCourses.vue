@@ -85,6 +85,7 @@ function getQuasarIcon(string) {
       'poetry',
       'philosophy',
     ],
+    headphones: ['music', 'sound', 'audio'],
     // add more icons and keywords as needed
   };
 
