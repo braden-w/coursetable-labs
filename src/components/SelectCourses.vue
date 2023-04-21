@@ -41,6 +41,12 @@ const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courseOptions.value);
 
+const fuse = new Fuse(courseOptions.value, {
+  keys: ['all_course_codes', 'title'],
+  threshold: 0.4,
+  includeScore: true,
+});
+
 function filterFn(val: string, update) {
   if (val === '') {
     update(() => {
@@ -51,11 +57,6 @@ function filterFn(val: string, update) {
 
   update(() => {
     const needle = val.toLowerCase();
-    const fuse = new Fuse(courseOptions.value, {
-      keys: ['all_course_codes', 'title'],
-      threshold: 0.4,
-      includeScore: true,
-    });
     displayedCourseOptions.value = fuse
       .search(needle)
       .map((result) => result.item);
