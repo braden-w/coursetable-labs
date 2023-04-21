@@ -1,4 +1,5 @@
 <template>
+  {{ selectedCourses }}
   <q-select
     v-model="selectedCourses"
     label="Select courses"
@@ -32,7 +33,7 @@
 
 <script setup lang="ts">
 import Fuse from 'fuse.js';
-import { useFavoritesStore } from 'src/stores/favorites';
+import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
@@ -98,7 +99,12 @@ function getQuasarIcon(course: CourseAbbreviated) {
 
   for (const [icon, keywords] of Object.entries(quasarIcons)) {
     for (const keyword of keywords) {
-      if (course.title?.toLowerCase().includes(keyword)) {
+      if (
+        course.title?.toLowerCase().includes(keyword) ||
+        course.all_course_codes.some((code) =>
+          code.toLowerCase().includes(keyword)
+        )
+      ) {
         return icon;
       }
     }
