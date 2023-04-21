@@ -114,8 +114,6 @@ function getQuasarIcon(course: CourseAbbreviated) {
       'glbl',
     ],
     // add more icons and keywords as needed
-
-    // add more icons and keywords as needed
   };
 
   for (const [icon, keywords] of Object.entries(quasarIcons)) {
@@ -133,7 +131,7 @@ function getQuasarIcon(course: CourseAbbreviated) {
   return 'school';
 }
 
-function getDisplayText(course) {
+function getDisplayText(course: CourseAbbreviated) {
   return `${course.all_course_codes.join(' | ')} | ${course.title}`;
 }
 </script>
