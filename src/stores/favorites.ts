@@ -34,10 +34,16 @@ export const useFavoritesStore = defineStore('courses', {
   },
   actions: {
     async fetchAbbreviatedCatalog() {
-      const { data, error } = await supabase
-        .from('Courses')
-        .select(selectedColumns.join(','));
-      // .limit(1000);
+      // const { data, error } = await supabase
+      //   .from('Courses')
+      //   .select(selectedColumns.join(','))
+      //   .gt('season_code', '202003');
+
+      // Fetch json from 'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
+      const response = await fetch(
+        'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
+      );
+      const data = await response.json();
       this.courses = data;
     },
   },
