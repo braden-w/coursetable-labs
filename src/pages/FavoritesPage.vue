@@ -47,13 +47,16 @@
           <q-input filled v-model="defendChoices" />
         </q-card-section>
       </q-card>
-      <q-btn
-        color="primary"
-        label="Submit"
-        type="submit"
-        :disable="!isFormValid"
-        stretch
-      />
+
+      <q-card flat class="my-card q-mb-md">
+        <q-btn
+          color="primary"
+          label="Submit"
+          type="submit"
+          :disable="!isFormValid"
+          class="full-width"
+        />
+      </q-card>
     </q-form>
   </q-page>
 </template>
@@ -92,7 +95,5 @@ const isFormValid = computed(() => {
 .my-card {
   width: 48rem;
   border-radius: 8px;
-  box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
-    0 1px 3px 1px rgba(60, 64, 67, 0.15);
 }
 </style>
