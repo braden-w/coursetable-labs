@@ -47,6 +47,13 @@
           <q-input filled v-model="defendChoices" />
         </q-card-section>
       </q-card>
+      <q-btn
+        color="primary"
+        label="Submit"
+        @click="submitForm"
+        :disable="!isFormValid"
+        stretch
+      />
     </div>
   </q-page>
 </template>
