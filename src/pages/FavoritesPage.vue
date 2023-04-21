@@ -24,9 +24,7 @@
             label="Email"
             v-model="email"
             :rules="[
-              (val) =>
-                (val !== null && val !== '' && isValidEmail(val)) ||
-                'Please enter a valid email',
+              (val) => isValidEmail(val) || 'Please enter a valid email',
             ]"
           />
         </q-card-section>
