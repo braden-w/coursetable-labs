@@ -4,7 +4,7 @@ import { CourseFromSupabase } from 'src/types/courseFromSupabase';
 
 type CourseAbbreviated = Pick<
   CourseFromSupabase,
-  'course_id' | 'all_course_codes' | 'title'
+  'same_course_id' | 'all_course_codes' | 'title'
 >;
 
 type CourseOptions = {
@@ -13,7 +13,7 @@ type CourseOptions = {
 };
 
 const selectedColumns: (keyof CourseAbbreviated)[] = [
-  'course_id',
+  'same_course_id',
   'all_course_codes',
   'title',
 ];
@@ -28,7 +28,7 @@ export const useFavoritesStore = defineStore('courses', {
   getters: {
     courseOptions: (state) =>
       state.courses.map((course) => ({
-        course_id: course.course_id,
+        same_course_id: course.same_course_id,
         displayText: `${course.all_course_codes.join(' | ')} - ${course.title}`,
       })),
   },
@@ -36,8 +36,8 @@ export const useFavoritesStore = defineStore('courses', {
     async fetchAbbreviatedCatalog() {
       const { data, error } = await supabase
         .from('Courses')
-        .select(selectedColumns.join(','))
-        .limit(1000);
+        .select(selectedColumns.join(','));
+      // .limit(1000);
       this.courses = data;
     },
   },
