@@ -4,7 +4,7 @@
     label="Select courses"
     :options="displayedCourseOptions"
     option-value="course_id"
-    option-label="displayText"
+    :option-label="getDisplayText"
     multiple
     clearable
     use-input
@@ -103,5 +103,9 @@ function getQuasarIcon(string) {
       }
     }
   }
+}
+
+function getDisplayText(course) {
+  return `${course.all_course_codes.join(' | ')} | ${course.title}`;
 }
 </script>
