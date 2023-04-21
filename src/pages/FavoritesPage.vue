@@ -11,7 +11,7 @@
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h6">What courses have you taken so far?</div>
-          <q-input outlined v-model="coursesTaken" class="q-mt-sm" />
+          <q-input standout v-model="coursesTaken" class="q-mt-sm" />
         </q-card-section>
       </q-card>
 
@@ -20,14 +20,14 @@
           <div class="text-h6">
             What courses have been your favorite courses at Yale?
           </div>
-          <q-input outlined v-model="favoriteCourses" class="q-mt-sm" />
+          <q-input standout v-model="favoriteCourses" class="q-mt-sm" />
         </q-card-section>
       </q-card>
 
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h6">Any words to defend your choices?</div>
-          <q-input outlined v-model="defendChoices" class="q-mt-sm" />
+          <q-input standout v-model="defendChoices" class="q-mt-sm" />
         </q-card-section>
       </q-card>
     </div>
@@ -48,7 +48,7 @@ export default {
 
 <style>
 .my-card {
-  width: 80rem;
+  width: 48rem;
   border-radius: 8px;
   box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3),
     0 1px 3px 1px rgba(60, 64, 67, 0.15);
