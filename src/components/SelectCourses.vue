@@ -66,34 +66,22 @@ function filterFn(val: string, update) {
 
 function getQuasarIcon(course: CourseAbbreviated) {
   const quasarIcons = {
-    computer: [
-      'cpsc',
-      'computer',
-      'programming',
-      'code',
-      'algorithm',
-      'software',
-    ],
+    computer: ['cpsc', 'comp', 'program', 'code', 'algo', 'software'],
     telescope: ['astronomy', 'space', 'cosmos', 'galaxy', 'star', 'planet'],
     biotech: ['biology', 'microbiology', 'cells', 'organisms', 'genetics'],
-    psychology: [
-      'neuroscience',
-      'psychology',
-      'cognition',
-      'mind',
-      'intelligence',
-    ],
-    science: ['chemistry', 'molecule', 'atomic', 'science', 'element'],
+    psychology: ['neuro', 'psyc', 'cog', 'mind', 'intelligence'],
+    science: ['chem', 'molec', 'at', 'sc', 'element', 'phy', 'research', 'bio'],
     auto_stories: [
-      'literature',
-      'language',
-      'reading',
-      'writing',
+      'lit',
+      'lang',
+      'read',
+      'writ',
       'novel',
-      'poetry',
-      'philosophy',
+      'poet',
+      'engl',
+      'phil',
     ],
-    headphones: ['music', 'sound', 'audio'],
+    headphones: ['mus', 'sound', 'audio'],
     // add more icons and keywords as needed
   };
 
