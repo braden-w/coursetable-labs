@@ -63,8 +63,8 @@ export const useCoursesStore = defineStore('courses', {
       const { data, error } = await supabase
         .from('Courses')
         .select(this.toggledColumns.join(','))
-        .eq('season_code', '202303')
-        .limit(10);
+        .eq('season_code', '202303');
+      // .limit(10);
       this.courses = data;
     },
   },

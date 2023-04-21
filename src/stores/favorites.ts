@@ -4,7 +4,7 @@ import { CourseFromSupabase } from 'src/types/courseFromSupabase';
 
 type CourseAbbreviated = Pick<
   CourseFromSupabase,
-  'course_id' | 'all_course_codes' | 'title'
+  'same_course_id' | 'all_course_codes' | 'title'
 >;
 
 type CourseOptions = {
@@ -13,7 +13,7 @@ type CourseOptions = {
 };
 
 const selectedColumns: (keyof CourseAbbreviated)[] = [
-  'course_id',
+  'same_course_id',
   'all_course_codes',
   'title',
 ];
@@ -28,16 +28,23 @@ export const useFavoritesStore = defineStore('courses', {
   getters: {
     courseOptions: (state) =>
       state.courses.map((course) => ({
-        course_id: course.course_id,
-        displayText: `${course.all_course_codes.join(' | ')} - ${course.title}`,
+        all_course_codes: course.all_course_codes,
+        same_course_id: course.same_course_id,
+        title: course.title,
       })),
   },
   actions: {
     async fetchAbbreviatedCatalog() {
-      const { data, error } = await supabase
-        .from('Courses')
-        .select(selectedColumns.join(','))
-        .limit(1000);
+      // const { data, error } = await supabase
+      //   .from('Courses')
+      //   .select(selectedColumns.join(','))
+      //   .gt('season_code', '202003');
+
+      // Fetch json from 'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
+      const response = await fetch(
+        'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
+      );
+      const data = await response.json();
       this.courses = data;
     },
   },
