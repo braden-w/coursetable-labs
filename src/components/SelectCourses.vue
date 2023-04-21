@@ -17,7 +17,7 @@
     <template v-slot:option="scope">
       <q-item v-bind="scope.itemProps">
         <q-item-section avatar>
-          <q-icon :name="getQuasarIcon(scope.opt.title)" />
+          <q-icon :name="getQuasarIcon(scope.opt)" />
         </q-item-section>
         <q-item-section>
           <q-item-label>{{ scope.opt.title }}</q-item-label>
@@ -63,7 +63,7 @@ function filterFn(val: string, update) {
   });
 }
 
-function getQuasarIcon(string) {
+function getQuasarIcon(course: CourseAbbreviated) {
   const quasarIcons = {
     computer: [
       'cpsc',
@@ -98,7 +98,7 @@ function getQuasarIcon(string) {
 
   for (const [icon, keywords] of Object.entries(quasarIcons)) {
     for (const keyword of keywords) {
-      if (string.toLowerCase().includes(keyword)) {
+      if (course.title?.toLowerCase().includes(keyword)) {
         return icon;
       }
     }
