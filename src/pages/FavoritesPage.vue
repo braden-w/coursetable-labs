@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pt-md">
-    <div class="column items-center">
+    <q-form @submit.prevent="submitForm" class="column items-center">
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
@@ -50,14 +50,13 @@
       <q-btn
         color="primary"
         label="Submit"
-        @click="submitForm"
+        type="submit"
         :disable="!isFormValid"
         stretch
       />
-    </div>
+    </q-form>
   </q-page>
 </template>
-
 <script lang="ts">
 export default {
   async preFetch({ store }) {
@@ -69,7 +68,7 @@ export default {
 <script setup lang="ts">
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 
 const favoritesStore = useFavoritesStore();
 
@@ -80,8 +79,15 @@ function isValidEmail(email: string) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email);
 }
-</script>
 
+function submitForm() {
+  // Add implementation for form submission.
+}
+
+const isFormValid = computed(() => {
+  return isValidEmail(email.value) && favoritesStore.selectedCourses.length > 0;
+});
+</script>
 <style>
 .my-card {
   width: 48rem;
