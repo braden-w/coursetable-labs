@@ -6,20 +6,24 @@
           <div class="text-h4 text-weight-light q-mb-md">
             What is your favorite courses at Yale?
           </div>
-          <div class="text-subtitle1">Please share your course experiences</div>
+          <div class="text-subtitle1 text-weight-light">
+            Please share your course experiences
+          </div>
         </q-card-section>
       </q-card>
 
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
-          <div class="text-h6 q-mb-md">What courses have you taken so far?</div>
+          <div class="text-h6 text-weight-light q-mb-md">
+            What courses have you taken so far?
+          </div>
           <SelectCourses />
         </q-card-section>
       </q-card>
 
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
-          <div class="text-h6 q-mb-md">
+          <div class="text-h6 text-weight-light q-mb-md">
             What courses have been your favorite courses at Yale?
           </div>
           <SelectCourses />
@@ -28,8 +32,10 @@
 
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
-          <div class="text-h6 q-mb-md">Any words to defend your choices?</div>
-          <q-input v-model="defendChoices" class="q-mt-sm" />
+          <div class="text-h6 text-weight-light q-mb-md">
+            Any words to defend your choices?
+          </div>
+          <q-input filled v-model="defendChoices" />
         </q-card-section>
       </q-card>
     </div>
