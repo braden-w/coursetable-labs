@@ -10,6 +10,8 @@
     use-input
     filled
     use-chips
+    menu-self="bottom middle"
+    menu-anchor="top middle"
     @filter="filterFn"
   />
 </template>
