@@ -66,11 +66,6 @@ function filterFn(val: string, update) {
 
 function getQuasarIcon(course: CourseAbbreviated) {
   const quasarIcons = {
-    computer: ['cpsc', 'comp', 'program', 'code', 'algo', 'software'],
-    telescope: ['astronomy', 'space', 'cosmos', 'galaxy', 'star', 'planet'],
-    biotech: ['biology', 'microbiology', 'cells', 'organisms', 'genetics'],
-    psychology: ['neuro', 'psyc', 'cog', 'mind', 'intelligence'],
-    science: ['chem', 'molec', 'at', 'sc', 'element', 'phy', 'research', 'bio'],
     auto_stories: [
       'lit',
       'lang',
@@ -80,7 +75,14 @@ function getQuasarIcon(course: CourseAbbreviated) {
       'poet',
       'engl',
       'phil',
+      'hist',
     ],
+    movie: ['film', 'cinema', 'movie', 'theater', 'theatre', 'drama'],
+    computer: ['cpsc', 'comp', 'program', 'code', 'algo', 'software'],
+    telescope: ['astronomy', 'space', 'cosmos', 'galaxy', 'star', 'planet'],
+    biotech: ['biology', 'microbiology', 'cells', 'organisms', 'genetics'],
+    psychology: ['neuro', 'psyc', 'cog', 'mind', 'intelligence'],
+    science: ['chem', 'molec', 'at', 'sc', 'element', 'phy', 'research', 'bio'],
     headphones: ['mus', 'sound', 'audio'],
     // add more icons and keywords as needed
   };
@@ -97,6 +99,7 @@ function getQuasarIcon(course: CourseAbbreviated) {
       }
     }
   }
+  return 'school';
 }
 
 function getDisplayText(course) {
