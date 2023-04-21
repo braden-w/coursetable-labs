@@ -8,6 +8,8 @@
     multiple
     clearable
     use-input
+    filled
+    use-chips
     @filter="filterFn"
   />
 </template>
