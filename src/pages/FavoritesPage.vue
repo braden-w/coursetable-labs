@@ -42,8 +42,17 @@
   </q-page>
 </template>
 
-<script setup>
+<script lang="ts">
+export default {
+  async preFetch({ store }) {
+    const favoritesStore = useFavoritesStore(store);
+    favoritesStore.fetchAbbreviatedCatalog();
+  },
+};
+</script>
+<script setup lang="ts">
 import SelectCourses from 'src/components/SelectCourses.vue';
+import { useFavoritesStore } from 'src/stores/favorites';
 import { ref } from 'vue';
 
 const defendChoices = ref('');
