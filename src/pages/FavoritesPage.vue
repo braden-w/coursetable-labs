@@ -1,48 +1,53 @@
 <template>
-  <q-select
-    v-model="selectedCourses"
-    label="Select courses"
-    :options="displayedCourseOptions"
-    option-value="course_id"
-    option-label="displayText"
-    multiple
-    clearable
-    use-input
-    @filter="filterFn"
-  />
+  <q-page class="flex flex-center">
+    <div class="column items-center">
+      <q-card flat class="my-card q-ma-sm">
+        <q-card-section>
+          <div class="text-h4">Yale Course Survey</div>
+          <div class="text-subtitle1">Please share your course experiences</div>
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="my-card q-ma-sm">
+        <q-card-section>
+          <div class="text-h6">What courses have you taken so far?</div>
+          <q-input outlined v-model="coursesTaken" class="q-mt-sm" />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="my-card q-ma-sm">
+        <q-card-section>
+          <div class="text-h6">
+            What courses have been your favorite courses at Yale?
+          </div>
+          <q-input outlined v-model="favoriteCourses" class="q-mt-sm" />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="my-card q-ma-sm">
+        <q-card-section>
+          <div class="text-h6">Any words to defend your choices?</div>
+          <q-input outlined v-model="defendChoices" class="q-mt-sm" />
+        </q-card-section>
+      </q-card>
+    </div>
+  </q-page>
 </template>
 
-<script lang="ts">
+<script>
 export default {
-  async preFetch({ store }) {
-    const favoritesStore = useFavoritesStore(store);
-    favoritesStore.fetchAbbreviatedCatalog();
+  data() {
+    return {
+      coursesTaken: '',
+      favoriteCourses: '',
+      defendChoices: '',
+    };
   },
 };
 </script>
-<script setup lang="ts">
-import { useFavoritesStore } from 'src/stores/favorites';
-import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
 
-const favoritesStore = useFavoritesStore();
-const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
-
-const displayedCourseOptions = ref(courseOptions.value);
-
-function filterFn(val: string, update) {
-  if (val === '') {
-    update(() => {
-      displayedCourseOptions.value = courseOptions.value;
-    });
-    return;
-  }
-
-  update(() => {
-    const needle = val.toLowerCase();
-    displayedCourseOptions.value = courseOptions.value.filter(
-      (v) => v.displayText.toLowerCase().indexOf(needle) > -1
-    );
-  });
+<style>
+.my-card {
+  width: 80rem;
 }
-</script>
+</style>
