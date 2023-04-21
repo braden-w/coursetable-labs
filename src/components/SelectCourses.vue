@@ -84,6 +84,37 @@ function getQuasarIcon(course: CourseAbbreviated) {
     psychology: ['neuro', 'psyc', 'cog', 'mind', 'intelligence'],
     science: ['chem', 'molec', 'at', 'sc', 'element', 'phy', 'research', 'bio'],
     headphones: ['mus', 'sound', 'audio'],
+    health_and_safety: [
+      'phys',
+      'fit',
+      'gym',
+      'health',
+      'exercise',
+      'athletic',
+      'sport',
+    ],
+    account_balance: [
+      'econ',
+      'finance',
+      'money',
+      'invest',
+      'bus',
+      'account',
+      'bank',
+    ],
+    gavel: ['law', 'legal', 'crim', 'const', 'court', 'justice', 'rights'],
+    public: [
+      'geo',
+      'cult',
+      'anthro',
+      'soci',
+      'global',
+      'intl',
+      'relig',
+      'glbl',
+    ],
+    // add more icons and keywords as needed
+
     // add more icons and keywords as needed
   };
 
