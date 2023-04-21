@@ -36,6 +36,7 @@ import Fuse from 'fuse.js';
 import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
+import { getDisplayText } from 'src/utils/getDisplayText';
 
 const favoritesStore = useFavoritesStore();
 const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
@@ -129,9 +130,5 @@ function getQuasarIcon(course: CourseAbbreviated) {
     }
   }
   return 'school';
-}
-
-function getDisplayText(course: CourseAbbreviated) {
-  return `${course.all_course_codes.join(' | ')} | ${course.title}`;
 }
 </script>
