@@ -19,7 +19,16 @@
           <div class="text-h6 text-weight-light q-mb-md">
             What is your email address?
           </div>
-          <q-input filled label="Email" v-model="email" />
+          <q-input
+            filled
+            label="Email"
+            v-model="email"
+            :rules="[
+              (val) =>
+                (val !== null && val !== '' && isValidEmail(val)) ||
+                'Please enter a valid email',
+            ]"
+          />
         </q-card-section>
       </q-card>
 
@@ -61,6 +70,11 @@ const favoritesStore = useFavoritesStore();
 
 const email = ref('');
 const defendChoices = ref('');
+
+function isValidEmail(email: string) {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+}
 </script>
 
 <style>
