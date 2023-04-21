@@ -1,9 +1,9 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="q-pt-md">
     <div class="column items-center">
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
-          <div class="text-h4">Yale Course Survey</div>
+          <div class="text-h3">What is your favorite courses at Yale?</div>
           <div class="text-subtitle1">Please share your course experiences</div>
         </q-card-section>
       </q-card>
