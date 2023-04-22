@@ -65,7 +65,7 @@
               <q-input
                 filled
                 label="Favorite Professors"
-                v-model="favoriteProfessors"
+                v-model="selectedFavoriteProfessors"
                 hint="Enter a comma-separated list of professor first and last names "
               />
             </q-card-section>
@@ -129,7 +129,7 @@
             <q-btn
               color="primary"
               label="Submit"
-              @click="submitForm"
+              @click="handleFormSubmission"
               :disable="!isStep3Valid"
             />
           </div>
@@ -149,35 +149,27 @@ export default {
 <script setup lang="ts">
 import SelectMajor from './SelectMajor.vue';
 import { useMutation } from '@tanstack/vue-query';
+import { storeToRefs } from 'pinia';
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
-import { supabase } from 'src/supabase';
-import { getDisplayText } from 'src/utils/getDisplayText';
 import { computed, ref } from 'vue';
 
 const favoritesStore = useFavoritesStore();
+const {
+  email,
+  major,
+  selectedFavoriteCourses,
+  selectedFavoriteProfessors,
+  remarks,
+} = storeToRefs(favoritesStore);
+
 const showDialog = ref(false);
 
 const activeStep = ref(0);
-const email = ref('');
-const remarks = ref('');
-const favoriteProfessors = ref('');
 
 function isValidEmail(email: string) {
   const re = /\S+@\S+\.\S+/;
   return re.test(email);
-}
-
-async function submitForm() {
-  const { error } = await supabase.from('UserCourse').insert({
-    email: email.value,
-    selected_courses: favoritesStore.selectedFavoriteCourses,
-    favorite_professors: favoriteProfessors.value,
-    remarks: remarks.value,
-    favorite_courses: favoritesStore.selectedFavoriteCourses
-      .map((course) => getDisplayText(course))
-      .join(';'),
-  });
 }
 
 async function handleFormSubmission() {
@@ -185,13 +177,10 @@ async function handleFormSubmission() {
 }
 
 const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
-  useMutation(submitForm);
+  useMutation(favoritesStore.submitForm);
 
 const isFormValid = computed(() => {
-  return (
-    isValidEmail(email.value) &&
-    favoritesStore.selectedFavoriteCourses.length > 0
-  );
+  return isValidEmail(email.value) && selectedFavoriteCourses.value.length > 0;
 });
 
 const isStep1Valid = computed(() => {
@@ -199,11 +188,11 @@ const isStep1Valid = computed(() => {
 });
 
 const isStep2Valid = computed(() => {
-  return major.value.length > 0 && favoriteProfessors.value !== '';
+  return major.value.length > 0 && selectedFavoriteProfessors.value !== '';
 });
 
 const isStep3Valid = computed(() => {
-  return favoritesStore.selectedFavoriteCourses.length > 0;
+  return selectedFavoriteCourses.value.length > 0;
 });
 
 function nextStep() {
