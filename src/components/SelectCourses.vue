@@ -4,12 +4,12 @@
     label="Select courses"
     :options="displayedCourseOptions"
     option-value="course_id"
-    option-label="displayText"
+    :option-label="getDisplayText"
     multiple
     clearable
     use-input
-    filled
     use-chips
+    filled
     menu-self="bottom middle"
     menu-anchor="top middle"
     @filter="filterFn"
@@ -17,7 +17,7 @@
     <template v-slot:option="scope">
       <q-item v-bind="scope.itemProps">
         <q-item-section avatar>
-          <q-icon :name="getQuasarIcon(scope.opt.title)" />
+          <q-icon :name="getQuasarIcon(scope.opt)" />
         </q-item-section>
         <q-item-section>
           <q-item-label>{{ scope.opt.title }}</q-item-label>
@@ -32,16 +32,17 @@
 
 <script setup lang="ts">
 import Fuse from 'fuse.js';
-import { useFavoritesStore } from 'src/stores/favorites';
+import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
+import { getDisplayText } from 'src/utils/getDisplayText';
 
 const favoritesStore = useFavoritesStore();
-const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
+const { selectedCourses, courses } = storeToRefs(favoritesStore);
 
-const displayedCourseOptions = ref(courseOptions.value);
+const displayedCourseOptions = ref(courses.value);
 
-const fuse = new Fuse(courseOptions.value, {
+const fuse = new Fuse(courses.value, {
   keys: ['all_course_codes', 'title'],
   threshold: 0.4,
   includeScore: true,
@@ -50,7 +51,7 @@ const fuse = new Fuse(courseOptions.value, {
 function filterFn(val: string, update) {
   if (val === '') {
     update(() => {
-      displayedCourseOptions.value = courseOptions.value;
+      displayedCourseOptions.value = courses.value;
     });
     return;
   }
@@ -63,45 +64,70 @@ function filterFn(val: string, update) {
   });
 }
 
-function getQuasarIcon(string) {
+function getQuasarIcon(course: CourseAbbreviated) {
   const quasarIcons = {
-    computer: [
-      'cpsc',
-      'computer',
-      'programming',
-      'code',
-      'algorithm',
-      'software',
+    auto_stories: [
+      'lit',
+      'lang',
+      'read',
+      'writ',
+      'novel',
+      'poet',
+      'engl',
+      'phil',
+      'hist',
     ],
+    movie: ['film', 'cinema', 'movie', 'theater', 'theatre', 'drama'],
+    computer: ['cpsc', 'comp', 'program', 'code', 'algo', 'software'],
     telescope: ['astronomy', 'space', 'cosmos', 'galaxy', 'star', 'planet'],
     biotech: ['biology', 'microbiology', 'cells', 'organisms', 'genetics'],
-    psychology: [
-      'neuroscience',
-      'psychology',
-      'cognition',
-      'mind',
-      'intelligence',
+    psychology: ['neuro', 'psyc', 'cog', 'mind', 'intelligence'],
+    science: ['chem', 'molec', 'at', 'sc', 'element', 'phy', 'research', 'bio'],
+    headphones: ['mus', 'sound', 'audio'],
+    health_and_safety: [
+      'phys',
+      'fit',
+      'gym',
+      'health',
+      'exercise',
+      'athletic',
+      'sport',
     ],
-    science: ['chemistry', 'molecule', 'atomic', 'science', 'element'],
-    auto_stories: [
-      'literature',
-      'language',
-      'reading',
-      'writing',
-      'novel',
-      'poetry',
-      'philosophy',
+    account_balance: [
+      'econ',
+      'finance',
+      'money',
+      'invest',
+      'bus',
+      'account',
+      'bank',
     ],
-    headphones: ['music', 'sound', 'audio'],
+    gavel: ['law', 'legal', 'crim', 'const', 'court', 'justice', 'rights'],
+    public: [
+      'geo',
+      'cult',
+      'anthro',
+      'soci',
+      'global',
+      'intl',
+      'relig',
+      'glbl',
+    ],
     // add more icons and keywords as needed
   };
 
   for (const [icon, keywords] of Object.entries(quasarIcons)) {
     for (const keyword of keywords) {
-      if (string.toLowerCase().includes(keyword)) {
+      if (
+        course.title?.toLowerCase().includes(keyword) ||
+        course.all_course_codes.some((code) =>
+          code.toLowerCase().includes(keyword)
+        )
+      ) {
         return icon;
       }
     }
   }
+  return 'school';
 }
 </script>
