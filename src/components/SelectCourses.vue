@@ -1,6 +1,6 @@
 <template>
   <q-select
-    v-model="selectedFavoriteCourses"
+    v-model="favoritesStore[keyOfFavoritesStore]"
     label="Select courses"
     :options="displayedCourseOptions"
     option-value="course_id"
@@ -34,11 +34,15 @@
 import Fuse from 'fuse.js';
 import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { ref, defineProps } from 'vue';
 import { getDisplayText } from 'src/utils/getDisplayText';
 
+const props = defineProps<{
+  keyOfFavoritesStore: keyof typeof favoritesStore.$state;
+}>();
+
 const favoritesStore = useFavoritesStore();
-const { selectedFavoriteCourses, courses } = storeToRefs(favoritesStore);
+const { courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
