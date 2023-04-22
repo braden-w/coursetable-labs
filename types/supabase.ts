@@ -155,6 +155,7 @@ export interface Database {
           created_at: string | null;
           email: string | null;
           favorite_courses: string | null;
+          favorite_professors: string | null;
           id: number;
           remarks: string | null;
           selected_courses: Json | null;
@@ -163,6 +164,7 @@ export interface Database {
           created_at?: string | null;
           email?: string | null;
           favorite_courses?: string | null;
+          favorite_professors?: string | null;
           id?: number;
           remarks?: string | null;
           selected_courses?: Json | null;
@@ -171,6 +173,7 @@ export interface Database {
           created_at?: string | null;
           email?: string | null;
           favorite_courses?: string | null;
+          favorite_professors?: string | null;
           id?: number;
           remarks?: string | null;
           selected_courses?: Json | null;
