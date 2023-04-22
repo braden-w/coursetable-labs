@@ -42,13 +42,13 @@ const { selectedCourses, courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
-const fuse = new Fuse(courses.value, {
-  keys: ['all_course_codes', 'title'],
-  threshold: 0.4,
-  includeScore: true,
-});
-
 function filterFn(val: string, update) {
+  const fuse = new Fuse(courses.value, {
+    keys: ['all_course_codes', 'title'],
+    threshold: 0.4,
+    includeScore: true,
+  });
+
   if (val === '') {
     update(() => {
       displayedCourseOptions.value = courses.value;
