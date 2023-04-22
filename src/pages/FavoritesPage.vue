@@ -1,6 +1,9 @@
 <template>
   <q-page class="q-pt-md">
-    <q-form @submit.prevent="onSubmitForm" class="column items-center q-pa-sm">
+    <q-form
+      @submit.prevent="handleFormSubmission"
+      class="column items-center q-pa-sm"
+    >
       <q-card flat class="max-width-card q-mb-lg q-pa-sm q-py-lg">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
@@ -100,13 +103,13 @@
               flat
               label="Submit Anyway"
               type="submit"
-              @click="onSubmitForm"
+              @click="handleFormSubmission"
               v-close-popup
             />
             <q-btn
               label="Submit"
               type="submit"
-              @click="onSubmitForm"
+              @click="handleFormSubmission"
               color="primary"
               v-close-popup
               :disable="!isValidEmail(email)"
@@ -245,15 +248,12 @@ async function submitForm() {
   }
 }
 
-async function onSubmitForm() {
-  mutate();
+async function handleFormSubmission() {
+  submitUserCourseMutation();
 }
 
-const { isLoading: isSubmitLoading, mutate } = useMutation(submitForm, {
-  onSuccess: () => {
-    showDialog.value = true;
-  },
-});
+const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
+  useMutation(submitForm);
 
 const isFormValid = computed(() => {
   return favoritesStore.selectedCourses.length > 0;
