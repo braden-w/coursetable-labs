@@ -17,8 +17,6 @@ export const useFavoritesStore = defineStore('courses', {
   state: () => ({
     courses: [] as CourseAbbreviated[],
     selectedCourses: [] as CourseAbbreviated[],
-    filter: '',
-    pagination: { rowsPerPage: 0 },
   }),
   actions: {
     async fetchAbbreviatedCatalog() {
