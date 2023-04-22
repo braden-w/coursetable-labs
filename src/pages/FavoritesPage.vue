@@ -27,7 +27,8 @@
           <SelectCourses />
         </q-card-section>
       </q-card>
-      <q-card flat class="max-width-card q-mb-lg q-pa-sm">
+
+      <!-- <q-card flat class="max-width-card q-mb-lg q-pa-sm">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What courses have been your
@@ -35,7 +36,7 @@
           </div>
           <SelectCourses />
         </q-card-section>
-      </q-card>
+      </q-card> -->
 
       <q-card flat class="max-width-card q-mb-lg q-pa-sm">
         <q-card-section>
@@ -104,7 +105,7 @@
           <q-card-actions align="right">
             <q-btn
               flat
-              label="Submit Anyway"
+              label="Cancel"
               type="submit"
               @click="handleFormSubmission"
               v-close-popup
@@ -241,6 +242,7 @@ async function submitForm() {
   const { error } = await supabase.from('UserCourse').insert({
     email: email.value,
     selected_courses: favoritesStore.selectedCourses,
+    favorite_professors: favoriteProfessors.value,
     remarks: remarks.value,
     favorite_courses: favoritesStore.selectedCourses
       .map((course) => getDisplayText(course))
