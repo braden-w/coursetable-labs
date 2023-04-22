@@ -152,23 +152,42 @@ export interface Database {
       };
       UserCourse: {
         Row: {
-          courseId: number;
+          created_at: string | null;
+          email: string | null;
+          favorite_courses: string | null;
+          favorite_professors: string | null;
           id: number;
-          userEmail: string;
+          remarks: string | null;
+          selected_courses: Json | null;
         };
         Insert: {
-          courseId: number;
+          created_at?: string | null;
+          email?: string | null;
+          favorite_courses?: string | null;
+          favorite_professors?: string | null;
           id?: number;
-          userEmail: string;
+          remarks?: string | null;
+          selected_courses?: Json | null;
         };
         Update: {
-          courseId?: number;
+          created_at?: string | null;
+          email?: string | null;
+          favorite_courses?: string | null;
+          favorite_professors?: string | null;
           id?: number;
-          userEmail?: string;
+          remarks?: string | null;
+          selected_courses?: Json | null;
         };
       };
     };
     Views: {
+      CoursesDisplayDropdown: {
+        Row: {
+          all_course_codes: Json | null;
+          same_course_id: number | null;
+          title: string | null;
+        };
+      };
       evaluationnarrativestocourses202303: {
         Row: {
           all_course_codes: Json | null;
