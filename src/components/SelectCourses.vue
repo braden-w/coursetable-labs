@@ -38,11 +38,11 @@ import { ref } from 'vue';
 import { getDisplayText } from 'src/utils/getDisplayText';
 
 const favoritesStore = useFavoritesStore();
-const { selectedCourses, courseOptions } = storeToRefs(favoritesStore);
+const { selectedCourses, courses } = storeToRefs(favoritesStore);
 
-const displayedCourseOptions = ref(courseOptions.value);
+const displayedCourseOptions = ref(courses.value);
 
-const fuse = new Fuse(courseOptions.value, {
+const fuse = new Fuse(courses.value, {
   keys: ['all_course_codes', 'title'],
   threshold: 0.4,
   includeScore: true,
@@ -51,7 +51,7 @@ const fuse = new Fuse(courseOptions.value, {
 function filterFn(val: string, update) {
   if (val === '') {
     update(() => {
-      displayedCourseOptions.value = courseOptions.value;
+      displayedCourseOptions.value = courses.value;
     });
     return;
   }
