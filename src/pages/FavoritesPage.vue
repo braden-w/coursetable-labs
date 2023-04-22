@@ -4,12 +4,13 @@
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
-            What is your favorite courses at Yale?
+            What are your favorite courses at Yale?
           </div>
           <div class="text-subtitle1 text-weight-light">
-            As we wrap up the school year, let's reflect. Please share your
-            course experiences. I wish I could use a Google Form but there are
-            too much
+            As we wrap up the school year, let's reflect on the courses that
+            defined our college careers. Please share your favorite courses. I
+            wish I could use a Google Form but there are too many courses to
+            list.
           </div>
         </q-card-section>
       </q-card>
