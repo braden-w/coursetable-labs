@@ -11,9 +11,7 @@
           </div>
           <div class="text-subtitle1 text-weight-light">
             As we wrap up the school year, let's reflect on the courses that
-            defined our college careers. Please share your favorite courses. I
-            wish I could use a Google Form but there are too many courses to
-            list, so this form uses custom rendering.
+            defined our college careers. Please share your favorite courses.
           </div>
         </q-card-section>
       </q-card>
