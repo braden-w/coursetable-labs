@@ -36,7 +36,14 @@
           <div class="text-h6 text-weight-light q-mb-md">
             What is your major?
           </div>
-          <SelectCourses />
+          <q-select
+            filled
+            label="Major"
+            v-model="major"
+            :options="majors"
+            emit-value
+            map-options
+          />
         </q-card-section>
       </q-card>
 
@@ -46,7 +53,12 @@
             Who have been your
             <span class="text-weight-bold"> favorite </span> professors at Yale?
           </div>
-          <SelectCourses />
+          <q-input
+            filled
+            label="Favorite Professors"
+            v-model="favoriteProfessors"
+            hint="Enter a comma-separated list"
+          />
         </q-card-section>
       </q-card>
 
@@ -109,6 +121,15 @@ const favoritesStore = useFavoritesStore();
 
 const email = ref('');
 const remarks = ref('');
+const major = ref('');
+const favoriteProfessors = ref('');
+const majors = [
+  'African Studies',
+  'American Studies',
+  'Anthropology',
+  'Applied Mathematics',
+  // Add more majors here
+];
 
 function isValidEmail(email: string) {
   const re = /\S+@\S+\.\S+/;
