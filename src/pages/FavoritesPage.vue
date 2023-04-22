@@ -92,7 +92,7 @@ async function submitForm() {
     remarks: remarks.value,
     favorite_courses: favoritesStore.selectedCourses
       .map((course) => getDisplayText(course))
-      .join('; '),
+      .join(';'),
   });
 }
 
