@@ -10,7 +10,7 @@
             As we wrap up the school year, let's reflect on the courses that
             defined our college careers. Please share your favorite courses. I
             wish I could use a Google Form but there are too many courses to
-            list.
+            list, so this form uses custom rendering.
           </div>
         </q-card-section>
       </q-card>
