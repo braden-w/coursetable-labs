@@ -37,12 +37,14 @@
             What is your major?
           </div>
           <q-select
-            filled
-            label="Major"
             v-model="major"
+            label="Major"
             :options="majors"
-            emit-value
-            map-options
+            multiple
+            clearable
+            use-input
+            use-chips
+            filled
           />
         </q-card-section>
       </q-card>
@@ -57,7 +59,7 @@
             filled
             label="Favorite Professors"
             v-model="favoriteProfessors"
-            hint="Enter a comma-separated list"
+            hint="Enter a comma-separated list of professor first and last names "
           />
         </q-card-section>
       </q-card>

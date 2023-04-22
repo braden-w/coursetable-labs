@@ -1,5 +1,4 @@
 <template>
-  {{ selectedCourses }}
   <q-select
     v-model="selectedCourses"
     label="Select courses"
@@ -9,8 +8,8 @@
     multiple
     clearable
     use-input
-    filled
     use-chips
+    filled
     menu-self="bottom middle"
     menu-anchor="top middle"
     @filter="filterFn"
