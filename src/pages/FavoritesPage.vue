@@ -61,7 +61,7 @@
         </q-step-content>
       </q-step>
 
-      <q-step :name="1" title="Best Courses">
+      <q-step :name="1" title="Overall">
         <q-step-content>
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
@@ -89,6 +89,16 @@
             </q-card-section>
           </q-card>
 
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">worst</span> courses at Yale?
+              </div>
+              <SelectCourses />
+            </q-card-section>
+          </q-card>
+
           <div class="q-mt-md">
             <q-btn
               color="primary"
@@ -106,18 +116,8 @@
         </q-step-content>
       </q-step>
 
-      <q-step :name="2" title="Worst Courses">
+      <q-step :name="2" title="Domain Specific">
         <q-step-content>
-          <q-card flat class="max-width-card q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">worst</span> courses at Yale?
-              </div>
-              <SelectCourses />
-            </q-card-section>
-          </q-card>
-
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
