@@ -71,7 +71,7 @@
     </q-form>
 
     <q-dialog v-model="showDialog" persistent>
-      <q-card class="max-width-card">
+      <q-card class="max-width-card" flat>
         <q-card-section>
           <div class="text-h6">Please enter your email and major</div>
           <div class="q-mt-md">
