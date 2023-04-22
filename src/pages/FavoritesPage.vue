@@ -38,9 +38,10 @@
           </div>
           <q-select
             v-model="major"
-            label="Major"
+            label="Major(s)"
             :options="majors"
             multiple
+            clearable
             use-chips
             filled
           />
@@ -121,7 +122,7 @@ const favoritesStore = useFavoritesStore();
 
 const email = ref('');
 const remarks = ref('');
-const major = ref('');
+const major = ref([]);
 const favoriteProfessors = ref('');
 const majors = [
   'African American Studies (B.A.)',
