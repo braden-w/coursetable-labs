@@ -3,7 +3,7 @@
     <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
       <q-step :name="0" title="Introduction">
         <q-step-content>
-          <q-card flat class="max-width-card q-mb-md q-pa-md">
+          <q-card flat class="max-width-card q-mb-lg">
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
                 What are your favorite courses at Yale?
