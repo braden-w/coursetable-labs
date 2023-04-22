@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pt-md">
     <q-form @submit.prevent="submitForm" class="column items-center q-pa-sm">
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
             What are your favorite courses at Yale?
@@ -15,7 +15,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What is your email address?
@@ -31,7 +31,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What is your major?
@@ -48,7 +48,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             Who have been your
@@ -63,7 +63,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What courses have been your
@@ -72,7 +72,7 @@
           <SelectCourses />
         </q-card-section>
       </q-card>
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What courses have been your
@@ -82,7 +82,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             Any remarks or words to defend your choices?
@@ -91,7 +91,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-btn
           :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
