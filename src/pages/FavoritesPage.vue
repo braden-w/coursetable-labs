@@ -34,7 +34,8 @@
       <q-card flat class="my-card q-mb-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
-            What courses have been your favorite courses at Yale?
+            What courses have been your
+            <span class="text-weight-bold"> favorite </span> courses at Yale?
           </div>
           <SelectCourses />
         </q-card-section>
