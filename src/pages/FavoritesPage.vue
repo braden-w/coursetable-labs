@@ -77,7 +77,7 @@
                 What courses have been your
                 <span class="text-weight-bold"> best </span> courses at Yale?
               </div>
-              <SelectCourses />
+              <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
             </q-card-section>
           </q-card>
 
@@ -87,7 +87,17 @@
                 What courses have been your
                 <span class="text-weight-bold">worst</span> courses at Yale?
               </div>
-              <SelectCourses />
+              <SelectCourses keyOfFavoritesStore="selectedWorstCourses" />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">worst</span> courses at Yale?
+              </div>
+              <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
             </q-card-section>
           </q-card>
 
