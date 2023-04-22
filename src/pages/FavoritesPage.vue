@@ -63,44 +63,51 @@
           :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
           type="submit"
+          @click="showDialog = true"
           :disable="!isFormValid"
           class="full-width"
         />
       </q-card>
-
-      <q-card flat class="max-width-card q-mb-lg q-pa-sm">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            What is your email address?
-          </div>
-          <q-input
-            filled
-            label="Email"
-            v-model="email"
-            :rules="[
-              (val) => isValidEmail(val) || 'Please enter a valid email',
-            ]"
-          />
-        </q-card-section>
-      </q-card>
-
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            What is your major?
-          </div>
-          <q-select
-            v-model="major"
-            label="Major(s)"
-            :options="majors"
-            multiple
-            clearable
-            use-chips
-            filled
-          />
-        </q-card-section>
-      </q-card>
     </q-form>
+
+    <q-dialog v-model="showDialog" persistent>
+      <q-card class="max-width-card">
+        <q-card-section>
+          <div class="text-h6">Please enter your email and major</div>
+          <div class="q-mt-md">
+            <q-input
+              filled
+              label="Email"
+              v-model="email"
+              :rules="[
+                (val) => isValidEmail(val) || 'Please enter a valid email',
+              ]"
+            />
+          </div>
+          <div class="q-mt-md">
+            <q-select
+              v-model="major"
+              label="Major(s)"
+              :options="majors"
+              multiple
+              clearable
+              use-chips
+              filled
+            />
+          </div>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat label="Submit Anyway" @click="submitForm" />
+          <q-btn
+            label="Submit"
+            color="primary"
+            v-close-popup
+            :disable="!isValidEmail(email)"
+            @click="submitForm"
+          />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-page>
 </template>
 <script lang="ts">
@@ -119,6 +126,7 @@ import { getDisplayText } from 'src/utils/getDisplayText';
 import { computed, ref } from 'vue';
 
 const favoritesStore = useFavoritesStore();
+const showDialog = ref(false);
 
 const email = ref('');
 const remarks = ref('');
@@ -227,7 +235,7 @@ async function submitForm() {
 }
 
 const isFormValid = computed(() => {
-  return isValidEmail(email.value) && favoritesStore.selectedCourses.length > 0;
+  return favoritesStore.selectedCourses.length > 0;
 });
 </script>
 <style>
