@@ -18,6 +18,59 @@
       <q-card flat class="max-width-card q-mb-md q-pa-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
+            What courses have been your
+            <span class="text-weight-bold"> best </span> courses at Yale?
+          </div>
+          <SelectCourses />
+        </q-card-section>
+      </q-card>
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            What courses have been your
+            <span class="text-weight-bold">worst</span> courses at Yale?
+          </div>
+          <SelectCourses />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            Who have been your
+            <span class="text-weight-bold"> favorite </span> professors at Yale?
+          </div>
+          <q-input
+            filled
+            label="Favorite Professors"
+            v-model="favoriteProfessors"
+            hint="Enter a comma-separated list of professor first and last names "
+          />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            Any remarks or words to defend your choices?
+          </div>
+          <q-input filled v-model="remarks" />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
+        <q-btn
+          :color="isFormValid ? 'primary' : 'dark'"
+          label="Submit"
+          type="submit"
+          :disable="!isFormValid"
+          class="full-width"
+        />
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md q-pa-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
             What is your email address?
           </div>
           <q-input
@@ -46,59 +99,6 @@
             filled
           />
         </q-card-section>
-      </q-card>
-
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            Who have been your
-            <span class="text-weight-bold"> favorite </span> professors at Yale?
-          </div>
-          <q-input
-            filled
-            label="Favorite Professors"
-            v-model="favoriteProfessors"
-            hint="Enter a comma-separated list of professor first and last names "
-          />
-        </q-card-section>
-      </q-card>
-
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            What courses have been your
-            <span class="text-weight-bold"> best </span> courses at Yale?
-          </div>
-          <SelectCourses />
-        </q-card-section>
-      </q-card>
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            What courses have been your
-            <span class="text-weight-bold">worst</span> courses at Yale?
-          </div>
-          <SelectCourses />
-        </q-card-section>
-      </q-card>
-
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-card-section>
-          <div class="text-h6 text-weight-light q-mb-md">
-            Any remarks or words to defend your choices?
-          </div>
-          <q-input filled v-model="remarks" />
-        </q-card-section>
-      </q-card>
-
-      <q-card flat class="max-width-card q-mb-md q-pa-md">
-        <q-btn
-          :color="isFormValid ? 'primary' : 'dark'"
-          label="Submit"
-          type="submit"
-          :disable="!isFormValid"
-          class="full-width"
-        />
       </q-card>
     </q-form>
   </q-page>
