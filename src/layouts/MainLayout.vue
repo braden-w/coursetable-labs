@@ -8,8 +8,8 @@
           no-caps
           flat
           to="/"
-          icon="menu"
-          label="MobileTable"
+          icon="emoji_events"
+          label="FavoriteTable"
         />
         <q-space />
         <q-btn
