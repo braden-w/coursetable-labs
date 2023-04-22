@@ -171,10 +171,10 @@ function isValidEmail(email: string) {
 async function submitForm() {
   const { error } = await supabase.from('UserCourse').insert({
     email: email.value,
-    selected_courses: favoritesStore.selectedCourses,
+    selected_courses: favoritesStore.selectedFavoriteCourses,
     favorite_professors: favoriteProfessors.value,
     remarks: remarks.value,
-    favorite_courses: favoritesStore.selectedCourses
+    favorite_courses: favoritesStore.selectedFavoriteCourses
       .map((course) => getDisplayText(course))
       .join(';'),
   });
@@ -188,7 +188,10 @@ const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
   useMutation(submitForm);
 
 const isFormValid = computed(() => {
-  return isValidEmail(email.value) && favoritesStore.selectedCourses.length > 0;
+  return (
+    isValidEmail(email.value) &&
+    favoritesStore.selectedFavoriteCourses.length > 0
+  );
 });
 
 const isStep1Valid = computed(() => {
@@ -200,7 +203,7 @@ const isStep2Valid = computed(() => {
 });
 
 const isStep3Valid = computed(() => {
-  return favoritesStore.selectedCourses.length > 0;
+  return favoritesStore.selectedFavoriteCourses.length > 0;
 });
 
 function nextStep() {

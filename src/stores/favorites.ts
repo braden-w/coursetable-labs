@@ -18,7 +18,7 @@ export const useFavoritesStore = defineStore('courses', {
     courses: [] as CourseAbbreviated[],
     email: '',
     major: [] as string[],
-    selectedCourses: [] as CourseAbbreviated[],
+    selectedFavoriteCourses: [] as CourseAbbreviated[],
   }),
   actions: {
     async fetchAbbreviatedCatalog() {
