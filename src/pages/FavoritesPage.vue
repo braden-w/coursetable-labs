@@ -155,6 +155,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { supabase } from 'src/supabase';
@@ -162,6 +163,7 @@ import { getDisplayText } from 'src/utils/getDisplayText';
 import { computed, ref } from 'vue';
 
 const favoritesStore = useFavoritesStore();
+const showDialog = ref(false);
 
 const activeStep = ref(0);
 const email = ref('');
@@ -263,12 +265,20 @@ async function submitForm() {
   const { error } = await supabase.from('UserCourse').insert({
     email: email.value,
     selected_courses: favoritesStore.selectedCourses,
+    favorite_professors: favoriteProfessors.value,
     remarks: remarks.value,
     favorite_courses: favoritesStore.selectedCourses
       .map((course) => getDisplayText(course))
       .join(';'),
   });
 }
+
+async function handleFormSubmission() {
+  submitUserCourseMutation();
+}
+
+const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
+  useMutation(submitForm);
 
 const isFormValid = computed(() => {
   return isValidEmail(email.value) && favoritesStore.selectedCourses.length > 0;
