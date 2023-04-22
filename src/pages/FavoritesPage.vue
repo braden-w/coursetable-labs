@@ -103,8 +103,13 @@ const isFormValid = computed(() => {
 });
 </script>
 <style>
-.my-card {
-  width: 48rem;
+.max-width-card {
+  width: 100%;
   border-radius: 8px;
+}
+@media (min-width: 640px) {
+  .max-width-card {
+    max-width: 48rem;
+  }
 }
 </style>
