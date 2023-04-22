@@ -80,6 +80,7 @@
               <q-input
                 filled
                 label="Email"
+                type="email"
                 v-model="email"
                 :rules="[
                   (val) => isValidEmail(val) || 'Please enter a valid email',
@@ -243,9 +244,6 @@ async function submitForm() {
       .map((course) => getDisplayText(course))
       .join(';'),
   });
-  if (!error) {
-    showDialog.value = false;
-  }
 }
 
 async function handleFormSubmission() {
