@@ -1,6 +1,6 @@
 <template>
   <q-select
-    v-model="selectedCourses"
+    v-model="selectedFavoriteCourses"
     label="Select courses"
     :options="displayedCourseOptions"
     option-value="course_id"
@@ -38,7 +38,7 @@ import { ref } from 'vue';
 import { getDisplayText } from 'src/utils/getDisplayText';
 
 const favoritesStore = useFavoritesStore();
-const { selectedCourses, courses } = storeToRefs(favoritesStore);
+const { selectedFavoriteCourses, courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
