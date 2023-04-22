@@ -20,14 +20,6 @@ export const useFavoritesStore = defineStore('courses', {
     filter: '',
     pagination: { rowsPerPage: 0 },
   }),
-  getters: {
-    courseOptions: (state) =>
-      state.courses.map((course) => ({
-        all_course_codes: course.all_course_codes,
-        same_course_id: course.same_course_id,
-        title: course.title,
-      })),
-  },
   actions: {
     async fetchAbbreviatedCatalog() {
       // const { data, error } = await supabase
