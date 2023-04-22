@@ -58,7 +58,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="max-width-card q-mb-lg q-pa-sm">
+      <q-card flat class="max-width-card q-mb-lg">
         <q-btn
           :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
