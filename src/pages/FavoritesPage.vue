@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pt-md">
-    <q-form @submit.prevent="submitForm" class="column items-center q-pa-sm">
+    <q-form @submit.prevent="onSubmitForm" class="column items-center q-pa-sm">
       <q-card flat class="max-width-card q-mb-lg q-pa-sm q-py-lg">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
@@ -62,52 +62,59 @@
         <q-btn
           :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
-          type="submit"
+          :loading="isSubmitLoading"
           @click="showDialog = true"
           :disable="!isFormValid"
           class="full-width"
         />
       </q-card>
-    </q-form>
 
-    <q-dialog v-model="showDialog" persistent>
-      <q-card class="max-width-card" flat>
-        <q-card-section>
-          <div class="text-h6">Please enter your email and major</div>
-          <div class="q-mt-md">
-            <q-input
-              filled
-              label="Email"
-              v-model="email"
-              :rules="[
-                (val) => isValidEmail(val) || 'Please enter a valid email',
-              ]"
+      <q-dialog v-model="showDialog" persistent>
+        <q-card class="max-width-card" flat>
+          <q-card-section>
+            <div class="text-h6">Please enter your email and major</div>
+            <div class="q-mt-md">
+              <q-input
+                filled
+                label="Email"
+                v-model="email"
+                :rules="[
+                  (val) => isValidEmail(val) || 'Please enter a valid email',
+                ]"
+              />
+            </div>
+            <div class="q-mt-md">
+              <q-select
+                v-model="major"
+                label="Major(s)"
+                :options="majors"
+                multiple
+                clearable
+                use-chips
+                filled
+              />
+            </div>
+          </q-card-section>
+          <q-card-actions align="right">
+            <q-btn
+              flat
+              label="Submit Anyway"
+              type="submit"
+              @click="onSubmitForm"
+              v-close-popup
             />
-          </div>
-          <div class="q-mt-md">
-            <q-select
-              v-model="major"
-              label="Major(s)"
-              :options="majors"
-              multiple
-              clearable
-              use-chips
-              filled
+            <q-btn
+              label="Submit"
+              type="submit"
+              @click="onSubmitForm"
+              color="primary"
+              v-close-popup
+              :disable="!isValidEmail(email)"
             />
-          </div>
-        </q-card-section>
-        <q-card-actions align="right">
-          <q-btn flat label="Submit Anyway" @click="submitForm" />
-          <q-btn
-            label="Submit"
-            color="primary"
-            v-close-popup
-            :disable="!isValidEmail(email)"
-            @click="submitForm"
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+    </q-form>
   </q-page>
 </template>
 <script lang="ts">
@@ -119,6 +126,7 @@ export default {
 };
 </script>
 <script setup lang="ts">
+import { useMutation } from '@tanstack/vue-query';
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { supabase } from 'src/supabase';
@@ -232,7 +240,20 @@ async function submitForm() {
       .map((course) => getDisplayText(course))
       .join(';'),
   });
+  if (!error) {
+    showDialog.value = false;
+  }
 }
+
+async function onSubmitForm() {
+  mutate();
+}
+
+const { isLoading: isSubmitLoading, mutate } = useMutation(submitForm, {
+  onSuccess: () => {
+    showDialog.value = true;
+  },
+});
 
 const isFormValid = computed(() => {
   return favoritesStore.selectedCourses.length > 0;
