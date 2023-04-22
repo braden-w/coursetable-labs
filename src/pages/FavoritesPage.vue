@@ -41,8 +41,6 @@
             label="Major"
             :options="majors"
             multiple
-            clearable
-            use-input
             use-chips
             filled
           />
