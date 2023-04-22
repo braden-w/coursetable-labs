@@ -16,6 +16,8 @@ const selectedColumns: (keyof CourseAbbreviated)[] = [
 export const useFavoritesStore = defineStore('courses', {
   state: () => ({
     courses: [] as CourseAbbreviated[],
+    email: '',
+    major: [] as string[],
     selectedCourses: [] as CourseAbbreviated[],
   }),
   actions: {
