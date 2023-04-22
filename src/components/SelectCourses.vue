@@ -42,7 +42,7 @@ const { selectedCourses, courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
-function filterFn(val: string, update) {
+function filterFn(val: string, update: (fn: () => void) => void) {
   const fuse = new Fuse(courses.value, {
     keys: ['all_course_codes', 'title'],
     threshold: 0.4,
