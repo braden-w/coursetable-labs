@@ -13,6 +13,8 @@
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { useFavoritesStore } from 'src/stores/favorites';
 import { ref } from 'vue';
 
 const majors = [
@@ -101,9 +103,10 @@ const majors = [
   'Other',
 ];
 
-const major = ref([]);
-const options = ref(majors);
+const favoritesStore = useFavoritesStore();
+const { major } = storeToRefs(favoritesStore);
 
+const options = ref(majors);
 function filterFn(val: string, update: (fn: () => void) => void) {
   update(() => {
     options.value = majors.filter((i) => {
