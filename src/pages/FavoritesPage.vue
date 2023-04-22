@@ -1,7 +1,7 @@
 <template>
   <q-page class="q-pt-md">
-    <q-form @submit.prevent="submitForm" class="column items-center">
-      <q-card flat class="my-card q-mb-md">
+    <q-form @submit.prevent="submitForm" class="column items-center q-pa-sm">
+      <q-card flat class="max-width-card q-mb-md">
         <q-card-section>
           <div class="text-h4 text-weight-light q-mb-md">
             What are your favorite courses at Yale?
@@ -15,7 +15,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="my-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             What is your email address?
@@ -31,17 +31,45 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="my-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
-            What courses have been your
-            <span class="text-weight-bold"> favorite </span> courses at Yale?
+            What is your major?
           </div>
           <SelectCourses />
         </q-card-section>
       </q-card>
 
-      <q-card flat class="my-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            Who have been your
+            <span class="text-weight-bold"> favorite </span> professors at Yale?
+          </div>
+          <SelectCourses />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            What courses have been your
+            <span class="text-weight-bold"> best </span> courses at Yale?
+          </div>
+          <SelectCourses />
+        </q-card-section>
+      </q-card>
+      <q-card flat class="max-width-card q-mb-md">
+        <q-card-section>
+          <div class="text-h6 text-weight-light q-mb-md">
+            What courses have been your
+            <span class="text-weight-bold">worst</span> courses at Yale?
+          </div>
+          <SelectCourses />
+        </q-card-section>
+      </q-card>
+
+      <q-card flat class="max-width-card q-mb-md">
         <q-card-section>
           <div class="text-h6 text-weight-light q-mb-md">
             Any remarks or words to defend your choices?
@@ -50,7 +78,7 @@
         </q-card-section>
       </q-card>
 
-      <q-card flat class="my-card q-mb-md">
+      <q-card flat class="max-width-card q-mb-md">
         <q-btn
           :color="isFormValid ? 'primary' : 'dark'"
           label="Submit"
