@@ -85,19 +85,18 @@
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 What courses have been your
-                <span class="text-weight-bold">worst</span> courses at Yale?
+                <span class="text-weight-bold">chillest</span> courses at Yale?
               </div>
-              <SelectCourses keyOfFavoritesStore="selectedWorstCourses" />
+              <SelectCourses keyOfFavoritesStore="selectedGuttiestCourses" />
             </q-card-section>
           </q-card>
 
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">worst</span> courses at Yale?
+                Any remarks or words to defend your choices?
               </div>
-              <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
+              <q-input filled v-model="remarks" />
             </q-card-section>
           </q-card>
 
@@ -123,9 +122,62 @@
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                Any remarks or words to defend your choices?
+                What courses have been your
+                <span class="text-weight-bold">best writing</span> courses at
+                Yale?
               </div>
-              <q-input filled v-model="remarks" />
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteWritingCourses"
+              />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">best science credit</span>
+                courses at Yale?
+              </div>
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteScienceCourses"
+              />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">best QR</span> courses at Yale?
+              </div>
+              <SelectCourses keyOfFavoritesStore="selectedFavoriteQrCourses" />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">best social science</span>
+                courses at Yale?
+              </div>
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteSocialScienceCourses"
+              />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                What courses have been your
+                <span class="text-weight-bold">best humanities</span> courses at
+                Yale?
+              </div>
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteHumanitesCourses"
+              />
             </q-card-section>
           </q-card>
 
