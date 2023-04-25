@@ -62,11 +62,8 @@
                 <span class="text-weight-bold"> favorite </span> professors at
                 Yale?
               </div>
-              <q-input
-                filled
-                label="Favorite Professors"
-                v-model="selectedFavoriteProfessors"
-                hint="Enter a comma-separated list of professor first and last names "
+              <SelectProfessors
+                keyOfFavoritesStore="selectedFavoriteProfessors"
               />
             </q-card-section>
           </q-card>
@@ -212,6 +209,7 @@ export default {
 import SelectMajor from './SelectMajor.vue';
 import { useMutation } from '@tanstack/vue-query';
 import { storeToRefs } from 'pinia';
+import SelectProfessors from 'src/components/SelectProfessors.vue';
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { computed, ref } from 'vue';
