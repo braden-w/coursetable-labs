@@ -16,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-import Fuse from 'fuse.js';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { ref, defineProps } from 'vue';
 import { professors } from 'src/stores/professors';
@@ -30,11 +29,6 @@ const favoritesStore = useFavoritesStore();
 const displayedProfessors = ref(professors);
 
 function filterFn(val: string, update: (fn: () => void) => void) {
-  const fuse = new Fuse(professors, {
-    threshold: 0.4,
-    includeScore: true,
-  });
-
   if (val === '') {
     update(() => {
       displayedProfessors.value = professors;
@@ -44,9 +38,9 @@ function filterFn(val: string, update: (fn: () => void) => void) {
 
   update(() => {
     const needle = val.toLowerCase();
-    displayedProfessors.value = fuse
-      .search(needle)
-      .map((result) => result.item);
+    displayedProfessors.value = professors.filter(
+      (professor) => professor.toLowerCase().indexOf(needle) > -1
+    );
   });
 }
 </script>
