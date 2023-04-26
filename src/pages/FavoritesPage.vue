@@ -196,6 +196,7 @@
               label="Submit"
               @click="handleFormSubmission"
               :disable="!isStep3Valid"
+              :loading="isSubmitLoading"
             />
           </div>
         </q-step-content>
@@ -234,8 +235,6 @@ const {
   remarks,
 } = storeToRefs(favoritesStore);
 
-const showDialog = ref(false);
-
 const activeStep = ref(0);
 
 function isValidEmail(email: string) {
@@ -249,10 +248,6 @@ async function handleFormSubmission() {
 
 const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
   useMutation(favoritesStore.submitForm);
-
-const isFormValid = computed(() => {
-  return isValidEmail(email.value) && selectedFavoriteCourses.value.length > 0;
-});
 
 const isStep1Valid = computed(() => {
   return isValidEmail(email.value) && major.value.length > 0;
