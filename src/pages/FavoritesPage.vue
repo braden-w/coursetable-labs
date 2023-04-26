@@ -168,6 +168,14 @@
             />
           </q-card-section>
 
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best courses in your major(s):
+              <span class="text-weight-bold">{{ major.join(', ') }}</span>
+            </div>
+            <SelectCourses keyOfFavoritesStore="selectedFavoriteMajorCourses" />
+          </q-card-section>
+
           <div class="q-mt-md">
             <q-btn
               color="primary"
