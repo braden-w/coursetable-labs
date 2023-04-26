@@ -3,7 +3,7 @@
     <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
       <q-step :name="0" title="Introduction">
         <q-step-content>
-          <q-card flat class="q-mb-lg">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
                 What are your favorite courses and professors at Yale?
@@ -62,11 +62,13 @@
           </q-card-section>
 
           <q-card-section>
-            <div class="text-h5 text-weight-light">
+            <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold"> overall </span> courses at
               Yale?
             </div>
-            <div class="text-h6 text-weight-light q-mb-sm"></div>
+            <!-- <div class="text-subtitle1 text-weight-light q-mb-sm">
+              Your favorite courses ever, that you would recommend to anyone.
+            </div> -->
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteCourses"
               label="Your favorite courses ever, that you would recommend to anyone."
@@ -77,7 +79,13 @@
             <div class="text-h6 text-weight-light q-mb-md">
               <span class="text-weight-bold">Chillest</span> courses at Yale?
             </div>
-            <SelectCourses keyOfFavoritesStore="selectedGuttiestCourses" />
+            <!-- <div class="text-subtitle1 text-weight-light q-mb-sm">
+              Your favorite courses ever, that you would recommend to anyone.
+            </div> -->
+            <SelectCourses
+              keyOfFavoritesStore="selectedGuttiestCourses"
+              label="The guttiest courses you've taken, that you would recommend to anyone."
+            />
           </q-card-section>
 
           <q-card-section>
@@ -111,7 +119,10 @@
               Best courses in your major(s):
               <span class="text-weight-bold">{{ major.join(', ') }}</span>
             </div>
-            <SelectCourses keyOfFavoritesStore="selectedFavoriteMajorCourses" />
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteMajorCourses"
+              label=""
+            />
           </q-card-section>
 
           <q-card-section>
@@ -124,6 +135,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteDistributionalCourses"
+              label=""
             />
           </q-card-section>
 
@@ -133,6 +145,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteLectureCourses"
+              label=""
             />
           </q-card-section>
 
@@ -142,6 +155,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
+              label=""
             />
           </q-card-section>
 

@@ -1,7 +1,7 @@
 <template>
   <q-select
     v-model="favoritesStore[keyOfFavoritesStore]"
-    label="Select courses"
+    :label="label"
     :options="displayedCourseOptions"
     option-value="course_id"
     :option-label="getDisplayText"
@@ -39,6 +39,7 @@ import { getDisplayText } from 'src/utils/getDisplayText';
 
 const props = defineProps<{
   keyOfFavoritesStore: keyof typeof favoritesStore.$state;
+  label: string;
 }>();
 
 const favoritesStore = useFavoritesStore();
