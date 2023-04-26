@@ -6,13 +6,14 @@
           <q-card flat class="max-width-card q-mb-lg">
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
-                What are your favorite courses at Yale?
+                What are your favorite courses and professors at Yale?
               </div>
               <div class="text-subtitle1 text-weight-light">
-                As we wrap up the school year, let's reflect on the courses that
-                defined our college careers. Please share your favorite courses.
-                I wish I could use a Google Form but there are too many courses
-                to list, so this form uses custom rendering.
+                As we wrap up the school year, let's reflect on the courses and
+                professors that defined our college experiences. Please share
+                your favorite courses. Your input will help future students
+                choose their courses and add nostalgia. Results will be shared
+                with respondents on May 1.
               </div>
             </q-card-section>
           </q-card>
@@ -53,7 +54,7 @@
         </q-step-content>
       </q-step>
 
-      <q-step :name="1" title="Overall">
+      <q-step :name="1" title="Overall Favorites">
         <q-step-content>
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
@@ -114,14 +115,12 @@
         </q-step-content>
       </q-step>
 
-      <q-step :name="2" title="Domain Specific">
+      <q-step :name="2" title="Category Favorites">
         <q-step-content>
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">best writing</span> courses at
-                Yale?
+                Best <span class="text-weight-bold">writing</span> credit?
               </div>
               <SelectCourses
                 keyOfFavoritesStore="selectedFavoriteWritingCourses"
@@ -132,9 +131,8 @@
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">best science credit</span>
-                courses at Yale?
+                Best <span class="text-weight-bold">science credit</span>
+                credit?
               </div>
               <SelectCourses
                 keyOfFavoritesStore="selectedFavoriteScienceCourses"
@@ -145,8 +143,7 @@
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">best QR</span> courses at Yale?
+                Best <span class="text-weight-bold">QR</span> credit?
               </div>
               <SelectCourses keyOfFavoritesStore="selectedFavoriteQrCourses" />
             </q-card-section>
@@ -155,9 +152,8 @@
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">best social science</span>
-                courses at Yale?
+                Best <span class="text-weight-bold">social science</span>
+                credit?
               </div>
               <SelectCourses
                 keyOfFavoritesStore="selectedFavoriteSocialScienceCourses"
@@ -168,9 +164,7 @@
           <q-card flat class="max-width-card q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">best humanities</span> courses at
-                Yale?
+                Best <span class="text-weight-bold">humanities</span> credit?
               </div>
               <SelectCourses
                 keyOfFavoritesStore="selectedFavoriteHumanitesCourses"
