@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { supabase } from 'src/supabase';
 import { CourseFromSupabase } from 'src/types/courseFromSupabase';
+import { getDisplayText } from 'src/utils/getDisplayText';
 
 export type CourseAbbreviated = Pick<
   CourseFromSupabase,
@@ -16,9 +17,16 @@ const selectedColumns: (keyof CourseAbbreviated)[] = [
 export const useFavoritesStore = defineStore('courses', {
   state: () => ({
     courses: [] as CourseAbbreviated[],
-    selectedCourses: [] as CourseAbbreviated[],
-    filter: '',
-    pagination: { rowsPerPage: 0 },
+    email: '',
+    major: [] as string[],
+    selectedFavoriteProfessors: [] as string[],
+    selectedFavoriteCourses: [] as CourseAbbreviated[],
+    selectedGuttiestCourses: [] as CourseAbbreviated[],
+    selectedFavoriteMajorCourses: [] as CourseAbbreviated[],
+    selectedFavoriteDistributionalCourses: [] as CourseAbbreviated[],
+    selectedFavoriteLectureCourses: [] as CourseAbbreviated[],
+    selectedFavoriteSeminarCourses: [] as CourseAbbreviated[],
+    remarks: '',
   }),
   actions: {
     async fetchAbbreviatedCatalog() {
@@ -33,6 +41,17 @@ export const useFavoritesStore = defineStore('courses', {
       );
       const data = await response.json();
       this.courses = data;
+    },
+    async submitForm() {
+      const { error } = await supabase.from('UserCourse').insert({
+        email: this.email,
+        selected_courses: this.selectedFavoriteCourses,
+        favorite_professors: this.selectedFavoriteProfessors,
+        remarks: this.remarks,
+        favorite_courses: this.selectedFavoriteCourses
+          .map((course) => getDisplayText(course))
+          .join(';'),
+      });
     },
   },
 });
