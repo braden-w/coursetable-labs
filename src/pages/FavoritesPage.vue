@@ -18,30 +18,26 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                What is your email address?
-              </div>
-              <q-input
-                filled
-                label="Email"
-                v-model="email"
-                :rules="[
-                  (val) => isValidEmail(val) || 'Please enter a valid email',
-                ]"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              What is your email address?
+            </div>
+            <q-input
+              filled
+              label="Email"
+              v-model="email"
+              :rules="[
+                (val) => isValidEmail(val) || 'Please enter a valid email',
+              ]"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                What is your major?
-              </div>
-              <SelectMajor />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              What is your major?
+            </div>
+            <SelectMajor />
+          </q-card-section>
 
           <div class="q-mt-md">
             <q-btn
@@ -56,47 +52,39 @@
 
       <q-step :name="1" title="Overall Favorites">
         <q-step-content>
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Who have been your
-                <span class="text-weight-bold"> favorite </span> professors at
-                Yale?
-              </div>
-              <SelectProfessors
-                keyOfFavoritesStore="selectedFavoriteProfessors"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Who have been your
+              <span class="text-weight-bold"> favorite </span> professors at
+              Yale?
+            </div>
+            <SelectProfessors
+              keyOfFavoritesStore="selectedFavoriteProfessors"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold"> best </span> courses at Yale?
-              </div>
-              <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              What courses have been your
+              <span class="text-weight-bold"> best </span> courses at Yale?
+            </div>
+            <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                What courses have been your
-                <span class="text-weight-bold">chillest</span> courses at Yale?
-              </div>
-              <SelectCourses keyOfFavoritesStore="selectedGuttiestCourses" />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              What courses have been your
+              <span class="text-weight-bold">chillest</span> courses at Yale?
+            </div>
+            <SelectCourses keyOfFavoritesStore="selectedGuttiestCourses" />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Any remarks or words to defend your choices?
-              </div>
-              <q-input filled v-model="remarks" />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Any remarks or words to defend your choices?
+            </div>
+            <q-input filled v-model="remarks" />
+          </q-card-section>
 
           <div class="q-mt-md">
             <q-btn
@@ -117,82 +105,68 @@
 
       <q-step :name="2" title="Category Favorites">
         <q-step-content>
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">writing</span> credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteWritingCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">writing</span> credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteWritingCourses"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">science credit</span>
-                credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteScienceCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">science credit</span>
+              credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteScienceCourses"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">QR</span> credit?
-              </div>
-              <SelectCourses keyOfFavoritesStore="selectedFavoriteQrCourses" />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">QR</span> credit?
+            </div>
+            <SelectCourses keyOfFavoritesStore="selectedFavoriteQrCourses" />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">social science</span>
-                credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteSocialScienceCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">social science</span>
+              credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteSocialScienceCourses"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">humanities</span> credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteHumanitesCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">humanities</span> credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteHumanitesCourses"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">lecture</span> credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteLectureCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">lecture</span> credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteLectureCourses"
+            />
+          </q-card-section>
 
-          <q-card flat class="q-mb-md">
-            <q-card-section>
-              <div class="text-h6 text-weight-light q-mb-md">
-                Best <span class="text-weight-bold">seminar</span> credit?
-              </div>
-              <SelectCourses
-                keyOfFavoritesStore="selectedFavoriteSeminarCourses"
-              />
-            </q-card-section>
-          </q-card>
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
+              Best <span class="text-weight-bold">seminar</span> credit?
+            </div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteSeminarCourses"
+            />
+          </q-card-section>
 
           <div class="q-mt-md">
             <q-btn
