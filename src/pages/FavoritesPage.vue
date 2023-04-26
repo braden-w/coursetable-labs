@@ -20,7 +20,7 @@
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              What is your email address?
+              What is your email address? <span class="text-red">*</span>
             </div>
             <q-input
               filled
@@ -34,7 +34,7 @@
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              What is your major?
+              What is your major? <span class="text-red">*</span>
             </div>
             <SelectMajor />
           </q-card-section>
@@ -52,9 +52,22 @@
 
       <q-step :name="1" title="Overall Favorites">
         <q-step-content>
+          <q-card flat class="q-mb-md">
+            <q-card-section>
+              <div class="text-h4 text-weight-light q-mb-md">
+                Overall Favorites
+              </div>
+              <div class="text-subtitle1 text-weight-light">
+                In this section, please answer the required questions regarding
+                your overall favorite professors and courses at Yale.
+              </div>
+            </q-card-section>
+          </q-card>
+
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Favorite <span class="text-weight-bold">professors</span> at Yale?
+              <span class="text-red">*</span>
             </div>
             <SelectProfessors
               keyOfFavoritesStore="selectedFavoriteProfessors"
@@ -65,7 +78,7 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold"> overall </span> courses at
-              Yale?
+              Yale? <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteCourses"
@@ -76,6 +89,7 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               <span class="text-weight-bold">Chillest</span> courses at Yale?
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedGuttiestCourses"
@@ -109,10 +123,23 @@
 
       <q-step :name="2" title="Category Favorites">
         <q-step-content>
+          <q-card flat class="q-mb-md">
+            <q-card-section>
+              <div class="text-h4 text-weight-light q-mb-md">
+                Category Favorites (Required)
+              </div>
+              <div class="text-subtitle1 text-weight-light">
+                Please answer the required questions regarding your overall
+                favorite professors and courses at Yale.
+              </div>
+            </q-card-section>
+          </q-card>
+
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best courses in your major(s):
               <span class="text-weight-bold">{{ major.join(', ') }}</span>
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteMajorCourses"
@@ -127,6 +154,7 @@
                 writing, science, QR, social science, and humanities
               </span>
               credits?
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteDistributionalCourses"
@@ -137,6 +165,7 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold">lecture</span> courses?
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteLectureCourses"
@@ -147,6 +176,7 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold">seminar</span> courses?
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
@@ -196,6 +226,11 @@ const {
   major,
   selectedFavoriteCourses,
   selectedFavoriteProfessors,
+  selectedGuttiestCourses,
+  selectedFavoriteMajorCourses,
+  selectedFavoriteDistributionalCourses,
+  selectedFavoriteLectureCourses,
+  selectedFavoriteSeminarCourses,
   remarks,
 } = storeToRefs(favoritesStore);
 
@@ -220,15 +255,24 @@ const isFormValid = computed(() => {
 });
 
 const isStep1Valid = computed(() => {
-  return isValidEmail(email.value);
+  return isValidEmail(email.value) && major.value.length > 0;
 });
 
 const isStep2Valid = computed(() => {
-  return major.value.length > 0 && selectedFavoriteProfessors.value.length > 0;
+  return (
+    selectedFavoriteProfessors.value.length > 0 &&
+    selectedFavoriteCourses.value.length > 0 &&
+    selectedGuttiestCourses.value.length > 0
+  );
 });
 
 const isStep3Valid = computed(() => {
-  return selectedFavoriteCourses.value.length > 0;
+  return (
+    selectedFavoriteMajorCourses.value.length > 0 &&
+    selectedFavoriteDistributionalCourses.value.length > 0 &&
+    selectedFavoriteLectureCourses.value.length > 0 &&
+    selectedFavoriteSeminarCourses.value.length > 0
+  );
 });
 
 function nextStep() {
