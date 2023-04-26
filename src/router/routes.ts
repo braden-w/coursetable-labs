@@ -15,6 +15,11 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/FavoritesPage.vue') },
     ],
   },
+  {
+    path: '/success',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('pages/SuccessPage.vue') }],
+  },
 
   // Always leave this as last one,
   // but you can also remove it
