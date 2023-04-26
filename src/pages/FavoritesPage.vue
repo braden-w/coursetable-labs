@@ -1,5 +1,5 @@
 <template>
-  <q-page class="q-pt-md">
+  <q-page padding>
     <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
       <q-step :name="0" title="Introduction">
         <q-step-content>
