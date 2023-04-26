@@ -121,7 +121,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteMajorCourses"
-              label=""
+              label="The course(s) that made you fall in love with your major."
             />
           </q-card-section>
 
@@ -135,7 +135,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteDistributionalCourses"
-              label=""
+              label="The distributional classes that you loved outside of your major."
             />
           </q-card-section>
 
@@ -145,7 +145,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteLectureCourses"
-              label=""
+              label="Your favorite lecture courses of all time at Yale."
             />
           </q-card-section>
 
@@ -155,7 +155,7 @@
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
-              label=""
+              label="Your favorite seminars of all time at Yale."
             />
           </q-card-section>
 
