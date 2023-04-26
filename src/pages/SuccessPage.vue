@@ -7,23 +7,16 @@
           Your responses have been recorded, and you will be emailed results on
           May 1.
         </div>
-        <!-- <vue-confetti
-            :confetti-options="{
-              angle: 90,
-              spread: 45,
-              startVelocity: 45,
-              elementCount: 50,
-              decay: 0.9,
-              colors: ['#a864fd', '#29cdff', '#78ff44', '#ff718d', '#fdff6a']
-            }"
-            :fire-once="true"
-          /> -->
+        <ConfettiExplosion :particleCount="200" :force="0.3" />
       </q-card-section>
     </q-card>
   </q-page>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ConfettiExplosion from 'vue-confetti-explosion';
+</script>
+
 <style>
 .max-width-card {
   width: 100%;
