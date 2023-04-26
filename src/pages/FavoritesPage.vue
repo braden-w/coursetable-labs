@@ -172,6 +172,28 @@
             </q-card-section>
           </q-card>
 
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                Best <span class="text-weight-bold">lecture</span> credit?
+              </div>
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteLectureCourses"
+              />
+            </q-card-section>
+          </q-card>
+
+          <q-card flat class="max-width-card q-mb-md">
+            <q-card-section>
+              <div class="text-h6 text-weight-light q-mb-md">
+                Best <span class="text-weight-bold">seminar</span> credit?
+              </div>
+              <SelectCourses
+                keyOfFavoritesStore="selectedFavoriteSeminarCourses"
+              />
+            </q-card-section>
+          </q-card>
+
           <div class="q-mt-md">
             <q-btn
               color="primary"

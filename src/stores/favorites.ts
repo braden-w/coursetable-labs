@@ -27,7 +27,10 @@ export const useFavoritesStore = defineStore('courses', {
     selectedFavoriteScienceCourses: [] as CourseAbbreviated[],
     selectedFavoriteQrCourses: [] as CourseAbbreviated[],
     selectedFavoriteWritingCourses: [] as CourseAbbreviated[],
+    selectedFavoriteLectureCourses: [] as CourseAbbreviated[],
+    selectedFavoriteSeminarCourses: [] as CourseAbbreviated[],
     remarks: '',
+    shareResponses: false,
   }),
   actions: {
     async fetchAbbreviatedCatalog() {
