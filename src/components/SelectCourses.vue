@@ -50,7 +50,6 @@ function filterFn(val: string, update: (fn: () => void) => void) {
   const fuse = new Fuse(courses.value, {
     keys: ['all_course_codes', 'title'],
     threshold: 0.4,
-    includeScore: true,
   });
 
   if (val === '') {
