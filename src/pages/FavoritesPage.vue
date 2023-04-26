@@ -3,7 +3,7 @@
     <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
       <q-step :name="0" title="Introduction">
         <q-step-content>
-          <q-card flat class="max-width-card q-mb-lg">
+          <q-card flat class="q-mb-lg">
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
                 What are your favorite courses and professors at Yale?
@@ -18,7 +18,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 What is your email address?
@@ -34,7 +34,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 What is your major?
@@ -56,7 +56,7 @@
 
       <q-step :name="1" title="Overall Favorites">
         <q-step-content>
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Who have been your
@@ -69,7 +69,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 What courses have been your
@@ -79,7 +79,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 What courses have been your
@@ -89,7 +89,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Any remarks or words to defend your choices?
@@ -117,7 +117,7 @@
 
       <q-step :name="2" title="Category Favorites">
         <q-step-content>
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">writing</span> credit?
@@ -128,7 +128,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">science credit</span>
@@ -140,7 +140,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">QR</span> credit?
@@ -149,7 +149,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">social science</span>
@@ -161,7 +161,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">humanities</span> credit?
@@ -172,7 +172,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">lecture</span> credit?
@@ -183,7 +183,7 @@
             </q-card-section>
           </q-card>
 
-          <q-card flat class="max-width-card q-mb-md">
+          <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h6 text-weight-light q-mb-md">
                 Best <span class="text-weight-bold">seminar</span> credit?
@@ -264,7 +264,7 @@ const isStep1Valid = computed(() => {
 });
 
 const isStep2Valid = computed(() => {
-  return major.value.length > 0 && selectedFavoriteProfessors.value !== '';
+  return major.value.length > 0 && selectedFavoriteProfessors.value.length > 0;
 });
 
 const isStep3Valid = computed(() => {
