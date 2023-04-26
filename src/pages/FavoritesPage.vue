@@ -58,6 +58,7 @@
             </div>
             <SelectProfessors
               keyOfFavoritesStore="selectedFavoriteProfessors"
+              label="Your favorite professors ever. Brilliant, quirky, quintessentially Yale, or all of the above."
             />
           </q-card-section>
 
@@ -66,12 +67,9 @@
               Best <span class="text-weight-bold"> overall </span> courses at
               Yale?
             </div>
-            <!-- <div class="text-subtitle1 text-weight-light q-mb-sm">
-              Your favorite courses ever, that you would recommend to anyone.
-            </div> -->
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteCourses"
-              label="Your favorite courses ever, that you would recommend to anyone."
+              label="Your favorite courses ever. The ones that made you think, laugh, and cry."
             />
           </q-card-section>
 
@@ -79,12 +77,9 @@
             <div class="text-h6 text-weight-light q-mb-md">
               <span class="text-weight-bold">Chillest</span> courses at Yale?
             </div>
-            <!-- <div class="text-subtitle1 text-weight-light q-mb-sm">
-              Your favorite courses ever, that you would recommend to anyone.
-            </div> -->
             <SelectCourses
               keyOfFavoritesStore="selectedGuttiestCourses"
-              label="The guttiest courses you've taken, that you would recommend to anyone."
+              label="The guttiest courses you've ever taken. No stress, no worries."
             />
           </q-card-section>
 
@@ -92,7 +87,7 @@
             <div class="text-h6 text-weight-light q-mb-md">
               Any remarks or words to defend your choices?
             </div>
-            <q-input filled v-model="remarks" />
+            <q-input filled v-model="remarks" label="Your remarks." />
           </q-card-section>
 
           <div class="q-mt-md">
