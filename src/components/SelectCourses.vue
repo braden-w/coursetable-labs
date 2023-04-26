@@ -10,8 +10,8 @@
     use-input
     use-chips
     filled
-    menu-self="bottom middle"
-    menu-anchor="top middle"
+    menu-self="top middle"
+    menu-anchor="bottom middle"
     @filter="filterFn"
   >
     <template v-slot:option="scope">
