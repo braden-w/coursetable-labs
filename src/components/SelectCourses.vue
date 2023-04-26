@@ -1,7 +1,7 @@
 <template>
   <q-select
-    v-model="selectedCourses"
-    label="Select courses"
+    v-model="favoritesStore[keyOfFavoritesStore]"
+    :label="label"
     :options="displayedCourseOptions"
     option-value="course_id"
     :option-label="getDisplayText"
@@ -10,8 +10,8 @@
     use-input
     use-chips
     filled
-    menu-self="bottom middle"
-    menu-anchor="top middle"
+    menu-self="top middle"
+    menu-anchor="bottom middle"
     @filter="filterFn"
   >
     <template v-slot:option="scope">
@@ -34,19 +34,23 @@
 import Fuse from 'fuse.js';
 import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { ref, defineProps } from 'vue';
 import { getDisplayText } from 'src/utils/getDisplayText';
 
+const props = defineProps<{
+  keyOfFavoritesStore: keyof typeof favoritesStore.$state;
+  label: string;
+}>();
+
 const favoritesStore = useFavoritesStore();
-const { selectedCourses, courses } = storeToRefs(favoritesStore);
+const { courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
-function filterFn(val: string, update) {
+function filterFn(val: string, update: (fn: () => void) => void) {
   const fuse = new Fuse(courses.value, {
     keys: ['all_course_codes', 'title'],
     threshold: 0.4,
-    includeScore: true,
   });
 
   if (val === '') {
