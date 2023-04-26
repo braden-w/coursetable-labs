@@ -8,6 +8,8 @@
     use-input
     use-chips
     filled
+    menu-self="top middle"
+    menu-anchor="bottom middle"
     @filter="filterFn"
   />
 </template>

@@ -1,15 +1,15 @@
 <template>
   <q-select
     v-model="favoritesStore[keyOfFavoritesStore]"
-    label="Select professors"
+    :label="label"
     :options="displayedProfessors"
     multiple
     clearable
     use-input
     use-chips
     filled
-    menu-self="bottom middle"
-    menu-anchor="top middle"
+    menu-self="top middle"
+    menu-anchor="bottom middle"
     @filter="filterFn"
   >
   </q-select>
@@ -22,6 +22,7 @@ import { professors } from 'src/stores/professors';
 
 const props = defineProps<{
   keyOfFavoritesStore: keyof typeof favoritesStore.$state;
+  label: string;
 }>();
 
 const favoritesStore = useFavoritesStore();
