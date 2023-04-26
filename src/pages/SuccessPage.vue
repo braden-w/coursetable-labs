@@ -4,18 +4,15 @@
       <q-card-section>
         <div class="text-h4 text-weight-light q-mb-md">Thank You! 🎉</div>
         <div class="text-subtitle1 text-weight-light q-mb-md">
-          Your responses have been recorded, and you will be emailed results on
-          May 1.
+          Your responses have been recorded, and you will be emailed results in
+          May.
         </div>
-        <ConfettiExplosion :particleCount="200" :force="0.3" />
       </q-card-section>
     </q-card>
   </q-page>
 </template>
 
-<script setup lang="ts">
-import ConfettiExplosion from 'vue-confetti-explosion';
-</script>
+<script setup lang="ts"></script>
 
 <style>
 .max-width-card {
