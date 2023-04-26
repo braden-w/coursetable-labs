@@ -128,7 +128,7 @@
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">lecture</span> credit?
+              Best <span class="text-weight-bold">lecture</span> courses?
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteLectureCourses"
@@ -137,7 +137,7 @@
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">seminar</span> credit?
+              Best <span class="text-weight-bold">seminar</span> courses?
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
