@@ -107,6 +107,14 @@
         <q-step-content>
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
+              Best courses in your major(s):
+              <span class="text-weight-bold">{{ major.join(', ') }}</span>
+            </div>
+            <SelectCourses keyOfFavoritesStore="selectedFavoriteMajorCourses" />
+          </q-card-section>
+
+          <q-card-section>
+            <div class="text-h6 text-weight-light q-mb-md">
               Best
               <span class="text-weight-bold">
                 writing, science, QR, social science, and humanities
@@ -134,14 +142,6 @@
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
             />
-          </q-card-section>
-
-          <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              Best courses in your major(s):
-              <span class="text-weight-bold">{{ major.join(', ') }}</span>
-            </div>
-            <SelectCourses keyOfFavoritesStore="selectedFavoriteMajorCourses" />
           </q-card-section>
 
           <div class="q-mt-md">
