@@ -54,9 +54,7 @@
         <q-step-content>
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              Who have been your
-              <span class="text-weight-bold"> favorite </span> professors at
-              Yale?
+              Favorite <span class="text-weight-bold">professors</span> at Yale?
             </div>
             <SelectProfessors
               keyOfFavoritesStore="selectedFavoriteProfessors"
@@ -64,17 +62,20 @@
           </q-card-section>
 
           <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              What courses have been your
-              <span class="text-weight-bold"> best </span> courses at Yale?
+            <div class="text-h5 text-weight-light">
+              Best <span class="text-weight-bold"> overall </span> courses at
+              Yale?
             </div>
-            <SelectCourses keyOfFavoritesStore="selectedFavoriteCourses" />
+            <div class="text-h6 text-weight-light q-mb-sm"></div>
+            <SelectCourses
+              keyOfFavoritesStore="selectedFavoriteCourses"
+              label="Your favorite courses ever, that you would recommend to anyone."
+            />
           </q-card-section>
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              What courses have been your
-              <span class="text-weight-bold">chillest</span> courses at Yale?
+              <span class="text-weight-bold">Chillest</span> courses at Yale?
             </div>
             <SelectCourses keyOfFavoritesStore="selectedGuttiestCourses" />
           </q-card-section>
