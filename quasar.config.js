@@ -86,7 +86,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
     framework: {
       config: {
-        dark: true,
+        dark: false,
         brand: {
           primary: '#00356b',
           secondary: '#BEB7A4',
