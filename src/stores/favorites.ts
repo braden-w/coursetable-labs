@@ -22,16 +22,11 @@ export const useFavoritesStore = defineStore('courses', {
     selectedFavoriteProfessors: [] as string[],
     selectedFavoriteCourses: [] as CourseAbbreviated[],
     selectedGuttiestCourses: [] as CourseAbbreviated[],
-    selectedFavoriteHumanitesCourses: [] as CourseAbbreviated[],
-    selectedFavoriteSocialScienceCourses: [] as CourseAbbreviated[],
-    selectedFavoriteScienceCourses: [] as CourseAbbreviated[],
-    selectedFavoriteQrCourses: [] as CourseAbbreviated[],
-    selectedFavoriteWritingCourses: [] as CourseAbbreviated[],
+    selectedFavoriteDistributionalCourses: [] as CourseAbbreviated[],
     selectedFavoriteLectureCourses: [] as CourseAbbreviated[],
     selectedFavoriteSeminarCourses: [] as CourseAbbreviated[],
     selectedFavoriteMajorCourses: [] as CourseAbbreviated[],
     remarks: '',
-    shareResponses: false,
   }),
   actions: {
     async fetchAbbreviatedCatalog() {

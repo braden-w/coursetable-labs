@@ -107,46 +107,14 @@
         <q-step-content>
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">writing</span> credit?
+              Best
+              <span class="text-weight-bold">
+                writing, science, QR, social science, and humanities
+              </span>
+              credits?
             </div>
             <SelectCourses
-              keyOfFavoritesStore="selectedFavoriteWritingCourses"
-            />
-          </q-card-section>
-
-          <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">science credit</span>
-              credit?
-            </div>
-            <SelectCourses
-              keyOfFavoritesStore="selectedFavoriteScienceCourses"
-            />
-          </q-card-section>
-
-          <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">QR</span> credit?
-            </div>
-            <SelectCourses keyOfFavoritesStore="selectedFavoriteQrCourses" />
-          </q-card-section>
-
-          <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">social science</span>
-              credit?
-            </div>
-            <SelectCourses
-              keyOfFavoritesStore="selectedFavoriteSocialScienceCourses"
-            />
-          </q-card-section>
-
-          <q-card-section>
-            <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold">humanities</span> credit?
-            </div>
-            <SelectCourses
-              keyOfFavoritesStore="selectedFavoriteHumanitesCourses"
+              keyOfFavoritesStore="selectedFavoriteDistributionalCourses"
             />
           </q-card-section>
 
