@@ -10,11 +10,8 @@
               </div>
               <p class="text-subtitle1 text-weight-light">
                 As we wrap up the school year, let's reflect on the courses and
-                professors that defined our college experiences. You'll not only
-                be contributing to a unique snapshot of our academic community,
-                but also helping future students make informed decisions about
-                their course selections (plus, nostalgia!). You must participate
-                to see results.
+                professors that defined our college experiences. You must
+                participate to see results.
               </p>
             </q-card-section>
           </q-card>
