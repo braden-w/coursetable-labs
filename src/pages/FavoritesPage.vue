@@ -166,7 +166,6 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold">lecture</span> courses?
-              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteLectureCourses"
@@ -177,7 +176,6 @@
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
               Best <span class="text-weight-bold">seminar</span> courses?
-              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteSeminarCourses"
@@ -269,9 +267,7 @@ const isStep2Valid = computed(() => {
 const isStep3Valid = computed(() => {
   return (
     selectedFavoriteMajorCourses.value.length > 0 &&
-    selectedFavoriteDistributionalCourses.value.length > 0 &&
-    selectedFavoriteLectureCourses.value.length > 0 &&
-    selectedFavoriteSeminarCourses.value.length > 0
+    selectedFavoriteDistributionalCourses.value.length > 0
   );
 });
 
