@@ -16,6 +16,7 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
+import { QSelectProps } from 'quasar';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { ref } from 'vue';
 
@@ -109,11 +110,17 @@ const favoritesStore = useFavoritesStore();
 const { major } = storeToRefs(favoritesStore);
 
 const options = ref(majors);
-function filterFn(val: string, update: (fn: () => void) => void) {
-  update(() => {
-    options.value = majors.filter((i) => {
-      return i.toLowerCase().includes(val.toLowerCase());
-    });
-  });
-}
+const filterFn: QSelectProps['onFilter'] = (val, update) => {
+  update(
+    () => {
+      options.value = majors.filter((i) => {
+        return i.toLowerCase().includes(val.toLowerCase());
+      });
+    },
+    (ref) => {
+      ref.setOptionIndex(-1);
+      ref.moveOptionSelection(1, true);
+    }
+  );
+};
 </script>
