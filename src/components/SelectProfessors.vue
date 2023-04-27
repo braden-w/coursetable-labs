@@ -4,7 +4,6 @@
     :label="label"
     :options="displayedProfessors"
     multiple
-    clearable
     use-input
     use-chips
     filled
