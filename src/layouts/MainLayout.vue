@@ -9,14 +9,14 @@
           flat
           to="/"
           icon="emoji_events"
-          label="FavoriteTable"
+          label="Course Superlatives"
         />
         <q-space />
         <q-btn
           round
           flat
           icon="code"
-          href="https://github.com/braden-w/mobiletable"
+          href="https://github.com/braden-w/coursetable-labs"
           target="_blank"
         />
         <!-- <q-btn round flat icon="info" to="/about" /> -->
@@ -31,7 +31,7 @@
 
     <q-page-container>
       <router-view />
-      <q-footer class="text-center bg-dark">&copy; MobileTable 2023</q-footer>
+      <q-footer class="text-center bg-dark">&copy; Table Labs 2023</q-footer>
     </q-page-container>
   </q-layout>
 </template>
