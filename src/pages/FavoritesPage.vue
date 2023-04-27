@@ -53,14 +53,14 @@
 
       <q-step :name="1" title="Overall Favorites">
         <q-step-content>
-          <q-card flat class="q-mb-md">
+          <q-card flat>
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
                 Overall Favorites
               </div>
               <div class="text-subtitle1 text-weight-light">
                 Please answer the required questions regarding your overall
-                favorite professors and courses at Yale.
+                favorite professors and courses.
               </div>
             </q-card-section>
           </q-card>
@@ -124,7 +124,7 @@
 
       <q-step :name="2" title="Category Favorites">
         <q-step-content>
-          <q-card flat class="q-mb-md">
+          <q-card flat>
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
                 Category Favorites
