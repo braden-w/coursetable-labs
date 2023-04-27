@@ -152,7 +152,7 @@
             <div class="text-h6 text-weight-light q-mb-md">
               Best
               <span class="text-weight-bold">
-                writing, science, QR, social science, and humanities
+                writing, science, QR, social science, or humanities
               </span>
               credits?
               <span class="text-red">*</span>
