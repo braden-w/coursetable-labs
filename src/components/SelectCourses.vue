@@ -36,7 +36,7 @@ import { CourseAbbreviated, useFavoritesStore } from 'src/stores/favorites';
 import { storeToRefs } from 'pinia';
 import { ref, defineProps } from 'vue';
 import { getDisplayText } from 'src/utils/getDisplayText';
-import { QSelect } from 'quasar';
+import { QSelectProps } from 'quasar';
 
 const props = defineProps<{
   keyOfFavoritesStore: keyof typeof favoritesStore.$state;
@@ -48,13 +48,7 @@ const { courses } = storeToRefs(favoritesStore);
 
 const displayedCourseOptions = ref(courses.value);
 
-function filterFn(
-  val: string,
-  update: (
-    callbackFn: () => void,
-    afterFn?: ((ref) => void) | undefined
-  ) => void
-) {
+const filterFn: QSelectProps['onFilter'] = (val, update) => {
   const fuse = new Fuse(courses.value, {
     keys: ['all_course_codes', 'title'],
     threshold: 0.4,
@@ -79,7 +73,7 @@ function filterFn(
       ref.moveOptionSelection(1, true);
     }
   );
-}
+};
 
 function getQuasarIcon(course: CourseAbbreviated) {
   const quasarIcons = {
