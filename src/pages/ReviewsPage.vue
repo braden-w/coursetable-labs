@@ -1,7 +1,5 @@
 <template>
   <q-page class="q-pa-md">
-    <!-- <MobileTable></MobileTable> -->
-
     <q-card flat>
       <q-input
         filled
