@@ -1,8 +1,8 @@
 {
-  "name": "mobiletable",
+  "name": "coursetable-labs",
   "version": "0.0.1",
   "description": "An app that brings an alternative view to CourseTable for mobile and desktop view.",
-  "productName": "MobileTable",
+  "productName": "CourseTable Labs",
   "author": "Braden Wong <***REMOVED***>",
   "private": true,
   "scripts": {
