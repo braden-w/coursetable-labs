@@ -3,19 +3,19 @@
     <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
       <q-step :name="0" title="Introduction">
         <q-step-content>
-          <q-card flat class="q-mb-md">
+          <q-card flat>
             <q-card-section>
-              <div class="text-h4 text-weight-light q-mb-md">
+              <div class="text-h4 text-weight-light q-mb-lg">
                 What are your favorite courses and professors at Yale?
               </div>
-              <div class="text-subtitle1 text-weight-light">
+              <p class="text-subtitle1 text-weight-light">
                 As we wrap up the school year, let's reflect on the courses and
                 professors that defined our college experiences. You'll not only
                 be contributing to a unique snapshot of our academic community,
                 but also helping future students make informed decisions about
-                their course selections (plus, nostalgia!). You must
-                participapte to see results.
-              </div>
+                their course selections (plus, nostalgia!). You must participate
+                to see results.
+              </p>
             </q-card-section>
           </q-card>
 
@@ -59,8 +59,8 @@
                 Overall Favorites
               </div>
               <div class="text-subtitle1 text-weight-light">
-                In this section, please answer the required questions regarding
-                your overall favorite professors and courses at Yale.
+                Please answer the required questions regarding your overall
+                favorite professors and courses at Yale.
               </div>
             </q-card-section>
           </q-card>
@@ -127,11 +127,11 @@
           <q-card flat class="q-mb-md">
             <q-card-section>
               <div class="text-h4 text-weight-light q-mb-md">
-                Category Favorites (Required)
+                Category Favorites
               </div>
               <div class="text-subtitle1 text-weight-light">
-                Please answer the required questions regarding your overall
-                favorite professors and courses at Yale.
+                Please answer the following questions regarding domain-specific
+                courses.
               </div>
             </q-card-section>
           </q-card>
