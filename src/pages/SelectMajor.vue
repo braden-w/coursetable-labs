@@ -4,7 +4,6 @@
     label="Major(s)"
     :options="options"
     multiple
-    clearable
     use-input
     use-chips
     filled

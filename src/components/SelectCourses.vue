@@ -6,7 +6,6 @@
     option-value="course_id"
     :option-label="getDisplayText"
     multiple
-    clearable
     use-input
     use-chips
     filled
