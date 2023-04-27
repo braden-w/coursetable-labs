@@ -57,7 +57,11 @@
               </div>
               <div class="text-subtitle1 text-weight-light">
                 Please answer the required questions regarding your overall
-                favorite professors and courses.
+                favorite professors and courses. To access your past courses,
+                you can click "Course History" on
+                <a href="https://degreeaudit.yale.edu/" target="_blank">
+                  Yale Degree Audit </a
+                >.
               </div>
             </q-card-section>
           </q-card>
@@ -128,7 +132,11 @@
               </div>
               <div class="text-subtitle1 text-weight-light">
                 Please answer the following questions regarding domain-specific
-                courses.
+                courses. To access your past courses, you can click "Course
+                History" on
+                <a href="https://degreeaudit.yale.edu/" target="_blank">
+                  Yale Degree Audit </a
+                >.
               </div>
             </q-card-section>
           </q-card>
