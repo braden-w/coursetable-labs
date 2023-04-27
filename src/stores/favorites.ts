@@ -45,12 +45,16 @@ export const useFavoritesStore = defineStore('courses', {
     async submitForm() {
       const { error } = await supabase.from('UserCourse').insert({
         email: this.email,
-        selected_courses: this.selectedFavoriteCourses,
-        favorite_professors: this.selectedFavoriteProfessors,
+        major: this.major,
+        selected_favorite_professors: this.selectedFavoriteProfessors,
+        selected_favorite_courses: this.selectedFavoriteCourses,
+        selected_guttiest_courses: this.selectedGuttiestCourses,
+        selected_favorite_major_courses: this.selectedFavoriteMajorCourses,
+        selected_favorite_distributional_courses:
+          this.selectedFavoriteDistributionalCourses,
+        selected_favorite_lecture_courses: this.selectedFavoriteLectureCourses,
+        selected_favorite_seminar_courses: this.selectedFavoriteSeminarCourses,
         remarks: this.remarks,
-        favorite_courses: this.selectedFavoriteCourses
-          .map((course) => getDisplayText(course))
-          .join(';'),
       });
     },
   },
