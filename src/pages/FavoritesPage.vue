@@ -220,6 +220,7 @@ import SelectProfessors from 'src/components/SelectProfessors.vue';
 import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 const favoritesStore = useFavoritesStore();
 const {
@@ -246,8 +247,11 @@ async function handleFormSubmission() {
   submitUserCourseMutation();
 }
 
+const router = useRouter();
 const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
-  useMutation(favoritesStore.submitForm);
+  useMutation(favoritesStore.submitForm, {
+    onSuccess: () => router.push('/success'),
+  });
 
 const isStep1Valid = computed(() => {
   return isValidEmail(email.value) && major.value.length > 0;

@@ -16,9 +16,10 @@
 </template>
 
 <script setup lang="ts">
+import { QSelectProps } from 'quasar';
 import { useFavoritesStore } from 'src/stores/favorites';
-import { ref, defineProps } from 'vue';
 import { professors } from 'src/stores/professors';
+import { defineProps, ref } from 'vue';
 
 const props = defineProps<{
   keyOfFavoritesStore: keyof typeof favoritesStore.$state;
@@ -29,7 +30,7 @@ const favoritesStore = useFavoritesStore();
 
 const displayedProfessors = ref(professors);
 
-function filterFn(val: string, update: (fn: () => void) => void) {
+const filterFn: QSelectProps['onFilter'] = (val, update) => {
   if (val === '') {
     update(() => {
       displayedProfessors.value = professors;
@@ -37,11 +38,17 @@ function filterFn(val: string, update: (fn: () => void) => void) {
     return;
   }
 
-  update(() => {
-    const needle = val.toLowerCase();
-    displayedProfessors.value = professors.filter(
-      (professor) => professor.toLowerCase().indexOf(needle) > -1
-    );
-  });
-}
+  update(
+    () => {
+      const needle = val.toLowerCase();
+      displayedProfessors.value = professors.filter(
+        (professor) => professor.toLowerCase().indexOf(needle) > -1
+      );
+    },
+    (ref) => {
+      ref.setOptionIndex(-1);
+      ref.moveOptionSelection(1, true);
+    }
+  );
+};
 </script>
