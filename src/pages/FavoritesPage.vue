@@ -1,6 +1,11 @@
 <template>
   <q-page padding>
-    <q-stepper v-model="activeStep" class="max-width-card q-mx-auto" flat>
+    <q-stepper
+      v-model="activeStep"
+      class="max-width-card q-mx-auto"
+      flat
+      :vertical="$q.screen.width < 600"
+    >
       <q-step :name="0" title="Introduction">
         <q-step-content>
           <q-card flat>
