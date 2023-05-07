@@ -1,7 +1,7 @@
 {
   "name": "coursetable-labs",
   "version": "0.0.1",
-  "description": "An app that brings an alternative view to CourseTable for mobile and desktop view.",
+  "description": "A web app that enables users to pick favorite courses, and brings an alternative view to CourseTable for mobile and desktop view.",
   "productName": "Course Superlatives",
   "author": "Braden Wong <***REMOVED***>",
   "private": true,
