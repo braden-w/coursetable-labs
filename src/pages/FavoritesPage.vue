@@ -14,9 +14,8 @@
                 What are your favorite courses and professors at Yale?
               </div>
               <p class="text-subtitle1 text-weight-light">
-                As we wrap up the school year, let's reflect on the courses and
-                professors that defined our college experiences. You must
-                participate to see results.
+                As we wrap up the school year, let's reflect on the courses and professors that
+                defined our college experiences. You must participate to see results.
               </p>
             </q-card-section>
           </q-card>
@@ -29,9 +28,7 @@
               filled
               label="Email"
               v-model="email"
-              :rules="[
-                (val) => isValidEmail(val) || 'Please enter a valid email',
-              ]"
+              :rules="[(val) => isValidEmail(val) || 'Please enter a valid email']"
             />
           </q-card-section>
 
@@ -43,12 +40,7 @@
           </q-card-section>
 
           <div class="q-mt-md">
-            <q-btn
-              color="primary"
-              label="Next"
-              @click="nextStep"
-              :disable="!isStep1Valid"
-            />
+            <q-btn color="primary" label="Next" @click="nextStep" :disable="!isStep1Valid" />
           </div>
         </q-step-content>
       </q-step>
@@ -57,16 +49,11 @@
         <q-step-content>
           <q-card flat>
             <q-card-section>
-              <div class="text-h4 text-weight-light q-mb-md">
-                Overall Favorites
-              </div>
+              <div class="text-h4 text-weight-light q-mb-md">Overall Favorites</div>
               <div class="text-subtitle1 text-weight-light">
-                Please answer the required questions regarding your overall
-                favorite professors and courses. To access your past courses,
-                you can click "Course History" on
-                <a href="https://degreeaudit.yale.edu/" target="_blank">
-                  Yale Degree Audit </a
-                >.
+                Please answer the required questions regarding your overall favorite professors and
+                courses. To access your past courses, you can click "Course History" on
+                <a href="https://degreeaudit.yale.edu/" target="_blank"> Yale Degree Audit </a>.
               </div>
             </q-card-section>
           </q-card>
@@ -84,8 +71,8 @@
 
           <q-card-section>
             <div class="text-h6 text-weight-light q-mb-md">
-              Best <span class="text-weight-bold"> overall </span> courses at
-              Yale? <span class="text-red">*</span>
+              Best <span class="text-weight-bold"> overall </span> courses at Yale?
+              <span class="text-red">*</span>
             </div>
             <SelectCourses
               keyOfFavoritesStore="selectedFavoriteCourses"
@@ -112,18 +99,8 @@
           </q-card-section>
 
           <div class="q-mt-md">
-            <q-btn
-              color="primary"
-              label="Previous"
-              @click="previousStep"
-              class="q-mr-sm"
-            />
-            <q-btn
-              color="primary"
-              label="Next"
-              @click="nextStep"
-              :disable="!isStep2Valid"
-            />
+            <q-btn color="primary" label="Previous" @click="previousStep" class="q-mr-sm" />
+            <q-btn color="primary" label="Next" @click="nextStep" :disable="!isStep2Valid" />
           </div>
         </q-step-content>
       </q-step>
@@ -132,16 +109,11 @@
         <q-step-content>
           <q-card flat>
             <q-card-section>
-              <div class="text-h4 text-weight-light q-mb-md">
-                Category Favorites
-              </div>
+              <div class="text-h4 text-weight-light q-mb-md">Category Favorites</div>
               <div class="text-subtitle1 text-weight-light">
-                Please answer the following questions regarding domain-specific
-                courses. To access your past courses, you can click "Course
-                History" on
-                <a href="https://degreeaudit.yale.edu/" target="_blank">
-                  Yale Degree Audit </a
-                >.
+                Please answer the following questions regarding domain-specific courses. To access
+                your past courses, you can click "Course History" on
+                <a href="https://degreeaudit.yale.edu/" target="_blank"> Yale Degree Audit </a>.
               </div>
             </q-card-section>
           </q-card>
@@ -194,12 +166,7 @@
           </q-card-section>
 
           <div class="q-mt-md">
-            <q-btn
-              color="primary"
-              label="Previous"
-              @click="previousStep"
-              class="q-mr-sm"
-            />
+            <q-btn color="primary" label="Previous" @click="previousStep" class="q-mr-sm" />
             <q-btn
               color="primary"
               label="Submit"
@@ -226,8 +193,8 @@ import SelectMajor from './SelectMajor.vue';
 import { useMutation } from '@tanstack/vue-query';
 import { storeToRefs } from 'pinia';
 import SelectProfessors from 'src/components/SelectProfessors.vue';
-import SelectCourses from 'src/components/SelectCourses.vue';
 import { useFavoritesStore } from 'src/stores/favorites';
+import SelectCourses from 'src/components/SelectCourses.vue';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -257,11 +224,10 @@ async function handleFormSubmission() {
 }
 
 const router = useRouter();
-const { mutate: submitUserCourseMutation, isPending: isSubmitLoading } =
-  useMutation({
-    mutationFn: () => favoritesStore.submitForm(),
-    onSuccess: () => router.push('/success'),
-  });
+const { mutate: submitUserCourseMutation, isPending: isSubmitLoading } = useMutation({
+  mutationFn: () => favoritesStore.submitForm(),
+  onSuccess: () => router.push('/success'),
+});
 
 const isStep1Valid = computed(() => {
   return isValidEmail(email.value) && major.value.length > 0;

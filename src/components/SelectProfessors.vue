@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { QSelectProps } from 'quasar';
+import type { QSelectProps } from 'quasar';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { professors } from 'src/stores/professors';
 import { defineProps, ref } from 'vue';
@@ -41,13 +41,13 @@ const filterFn: QSelectProps['onFilter'] = (val, update) => {
     () => {
       const needle = val.toLowerCase();
       displayedProfessors.value = professors.filter(
-        (professor) => professor.toLowerCase().indexOf(needle) > -1
+        (professor) => professor.toLowerCase().indexOf(needle) > -1,
       );
     },
     (ref) => {
       ref.setOptionIndex(-1);
       ref.moveOptionSelection(1, true);
-    }
+    },
   );
 };
 </script>

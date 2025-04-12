@@ -4,14 +4,11 @@
       <q-card-section>
         <div class="text-h4 text-weight-light q-mb-md">Thank You! 🎉</div>
         <div class="text-subtitle1 text-weight-light q-mb-md">
-          Your responses have been recorded, and you will be emailed results in
-          May.
+          Your responses have been recorded, and you will be emailed results in May.
         </div>
         <div class="text-subtitle1 text-weight-light q-mb-md">
           If you would like,
-          <a href="sms:&body=superlatives.yaleapps.com">
-            share this form with a friend
-          </a>
+          <a href="sms:&body=superlatives.yaleapps.com"> share this form with a friend </a>
           and spread the word!
         </div>
       </q-card-section>

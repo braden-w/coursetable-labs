@@ -1,22 +1,12 @@
 <template>
   <q-page padding>
     <q-card flat>
-      <q-input
-        filled
-        dense
-        debounce="300"
-        v-model="filter"
-        placeholder="Search Courses..."
-      >
+      <q-input filled dense debounce="300" v-model="filter" placeholder="Search Courses...">
         <template #append>
           <q-icon name="search" />
         </template>
         <template #after>
-          <q-btn
-            flat
-            :icon="showSettings ? 'expand_less' : 'expand_more'"
-            @click="toggleSettings"
-          >
+          <q-btn flat :icon="showSettings ? 'expand_less' : 'expand_more'" @click="toggleSettings">
           </q-btn>
         </template>
       </q-input>
@@ -44,13 +34,7 @@
               class="q-mr-sm text-body2"
             />
           </template>
-          <template
-            v-else-if="
-              props.value &&
-              Number(props.value) >= 0 &&
-              Number(props.value) <= 5
-            "
-          >
+          <template v-else-if="props.value && Number(props.value) >= 0 && Number(props.value) <= 5">
             <q-badge :color="`${priceGradient(props.value)}-3`">
               <div :class="`text-body2 text-${priceGradient(props.value)}-10`">
                 {{ props.value }}
@@ -82,14 +66,13 @@ import { useCoursesStore } from 'src/stores/courses';
 import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 
-function priceGradient(value) {
+function priceGradient(value: number) {
   const rangeColors = ['red', 'orange', 'lime', 'light-green', 'teal'];
   return rangeColors[Math.round(value) - 1];
 }
 
 const coursesStore = useCoursesStore();
-const { courses, columns, toggledColumns, filter, pagination } =
-  storeToRefs(coursesStore);
+const { courses, columns, toggledColumns, filter, pagination } = storeToRefs(coursesStore);
 
 const showSettings = ref(false);
 function toggleSettings() {

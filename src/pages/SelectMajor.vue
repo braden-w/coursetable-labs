@@ -15,7 +15,7 @@
 
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia';
-import { QSelectProps } from 'quasar';
+import type { QSelectProps } from 'quasar';
 import { useFavoritesStore } from 'src/stores/favorites';
 import { ref } from 'vue';
 
@@ -119,7 +119,7 @@ const filterFn: QSelectProps['onFilter'] = (val, update) => {
     (ref) => {
       ref.setOptionIndex(-1);
       ref.moveOptionSelection(1, true);
-    }
+    },
   );
 };
 </script>

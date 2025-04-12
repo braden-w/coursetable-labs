@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { supabase } from 'src/supabase';
-import { CourseFromSupabase } from 'src/types/courseFromSupabase';
+import type { CourseFromSupabase } from 'src/types/courseFromSupabase';
 
 type Column = {
   name: keyof CourseFromSupabase;
@@ -55,7 +55,7 @@ export const useCoursesStore = defineStore('courses', {
           field: key,
           sortable: true,
           align: 'left',
-        })
+        }),
       ),
   },
   actions: {

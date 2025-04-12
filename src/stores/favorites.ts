@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { supabase } from 'src/supabase';
-import { CourseFromSupabase } from 'src/types/courseFromSupabase';
+import type { CourseFromSupabase } from 'src/types/courseFromSupabase';
 import { getDisplayText } from 'src/utils/getDisplayText';
 
 export type CourseAbbreviated = Pick<
@@ -37,7 +37,7 @@ export const useFavoritesStore = defineStore('courses', {
 
       // Fetch json from 'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
       const response = await fetch(
-        'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json'
+        'https://qgwabimelbyerzbvkngr.supabase.co/storage/v1/object/public/json_views/CoursesDisplayDropdown.json',
       );
       const data = await response.json();
       this.courses = data;
@@ -50,8 +50,7 @@ export const useFavoritesStore = defineStore('courses', {
         selected_favorite_courses: this.selectedFavoriteCourses,
         selected_guttiest_courses: this.selectedGuttiestCourses,
         selected_favorite_major_courses: this.selectedFavoriteMajorCourses,
-        selected_favorite_distributional_courses:
-          this.selectedFavoriteDistributionalCourses,
+        selected_favorite_distributional_courses: this.selectedFavoriteDistributionalCourses,
         selected_favorite_lecture_courses: this.selectedFavoriteLectureCourses,
         selected_favorite_seminar_courses: this.selectedFavoriteSeminarCourses,
         remarks: this.remarks,

@@ -13,11 +13,7 @@
           <q-icon name="search" />
         </template>
         <template #after>
-          <q-btn
-            flat
-            :icon="showSettings ? 'expand_less' : 'expand_more'"
-            @click="toggleSettings"
-          >
+          <q-btn flat :icon="showSettings ? 'expand_less' : 'expand_more'" @click="toggleSettings">
           </q-btn>
         </template>
       </q-input>
@@ -39,12 +35,11 @@
 
 <script setup lang="ts">
 import { useQuery } from '@tanstack/vue-query';
-import { Database } from 'app/types/supabase';
+import type { Database } from 'app/types/supabase';
 import { supabase } from 'src/supabase';
 import { ref } from 'vue';
 
-type Row =
-  Database['public']['Views']['EvaluationNarrativesToCourses202303']['Row'];
+type Row = Database['public']['Views']['EvaluationNarrativesToCourses202303']['Row'];
 type Column = {
   name: keyof Row;
   label: string;
@@ -78,7 +73,7 @@ const columns: Column[] = evaluationNarrativeKeys.map(
     field: key,
     sortable: true,
     align: 'left',
-  })
+  }),
 );
 const visibleColumns: (keyof Row)[] = [
   'all_course_codes',
@@ -96,9 +91,7 @@ const { isLoading, isFetching, isError, data, error } = useQuery({
 });
 
 async function fetchCatalog() {
-  const { data, error } = await supabase
-    .from('EvaluationNarrativesToCourses202303')
-    .select('*');
+  const { data, error } = await supabase.from('EvaluationNarrativesToCourses202303').select('*');
   return data;
 }
 
@@ -106,7 +99,7 @@ async function fetchCatalog() {
 function keyToLabel(label: string) {
   return label
     .split('_')
-    .map((word) => word[0].toUpperCase() + word.slice(1))
+    .map((word) => word.at(0)?.toUpperCase() + word.slice(1))
     .join(' ');
 }
 
