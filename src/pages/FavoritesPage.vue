@@ -257,8 +257,9 @@ async function handleFormSubmission() {
 }
 
 const router = useRouter();
-const { isLoading: isSubmitLoading, mutate: submitUserCourseMutation } =
-  useMutation(favoritesStore.submitForm, {
+const { mutate: submitUserCourseMutation, isPending: isSubmitLoading } =
+  useMutation({
+    mutationFn: () => favoritesStore.submitForm(),
     onSuccess: () => router.push('/success'),
   });
 
