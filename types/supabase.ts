@@ -203,7 +203,7 @@ export interface Database {
           title: string | null;
         };
       };
-      evaluationnarrativestocourses202303: {
+      EvaluationNarrativesToCourses202303: {
         Row: {
           all_course_codes: Json | null;
           areas: Json | null;
